@@ -12,7 +12,7 @@ module.exports = {
     },
     colors: {
      baseColor:"#4337C9",
-     baseTextColor:"#ECEBEF"
+     baseTextColor:"#fff"
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],

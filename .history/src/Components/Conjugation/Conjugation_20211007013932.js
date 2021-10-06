@@ -1,15 +1,15 @@
 import React from 'react'
 import Navbar from '../Navbar'
-import SideBar from '../SideBar'
-const Live = () => {
+
+const Conjugation = () => {
     return (
         <div>
             <Navbar/>
             <SideBar>
-                Live
+                Conjugaison
             </SideBar>
         </div>
     )
 }
 
-export default Live
+export default Conjugation

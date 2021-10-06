@@ -1,15 +1,15 @@
 import React from 'react'
 import Navbar from '../Navbar'
 import SideBar from '../SideBar'
-const Live = () => {
+
+const Home = () => {
     return (
         <div>
             <Navbar/>
-            <SideBar>
-                Live
-            </SideBar>
+            <SideBar/>
+            home
         </div>
     )
 }
 
-export default Live
+export default Home
