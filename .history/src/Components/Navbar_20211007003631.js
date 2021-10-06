@@ -30,31 +30,31 @@ const Navbar = () => {
                             </a>
                             <a
                                 href="/grammar"
-                                className={`py-4 px-2 text-green-500 ${ pathname === '/grammar' ? "border-b-4" : '' } border-baseColor font-semibold `}
+                                className="py-4 px-2 text-gray-500 font-semibold hover:text-baseColor transition duration-300"
                             >
                                 Grammaire
                             </a>
                             <a
                                 href="/conjugation"
-                                className={`py-4 px-2 text-green-500 ${ pathname === '/conjugation' ? "border-b-4" : '' } border-baseColor font-semibold `}
+                                className="py-4 px-2 text-gray-500 font-semibold hover:text-baseColor transition duration-300"
                             >
                                 Conjugaison
                             </a>
                             <a
                                 href="/live"
-                                className={`py-4 px-2 text-green-500 ${ pathname === '/live' ? "border-b-4" : '' } border-baseColor font-semibold `}
+                                className="py-4 px-2 text-gray-500 font-semibold hover:text-baseColor transition duration-300"
                             >
                                 Live
                             </a>
                             <a
                                 href="/exercices&test"
-                                className={`py-4 px-2 text-green-500 ${ pathname === '/exercices&test' ? "border-b-4" : '' } border-baseColor font-semibold `}
+                                className="py-4 px-2 text-gray-500 font-semibold hover:text-baseColor transition duration-300"
                             >
                                 Exercices / Tests
                             </a>
                             <a
-                                href="contact"
-                                className={`py-4 px-2 text-green-500 ${ pathname === '/contact' ? "border-b-4" : '' } border-baseColor font-semibold `}
+                                href=""
+                                className="py-4 px-2 text-gray-500 font-semibold hover:text-baseColor transition duration-300"
                             >
                                 Contact Us
                             </a>
