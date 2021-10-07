@@ -8,11 +8,12 @@ import testImg from "../assets/workteam.png"
 
 const Home = () => {
     return (
-        <div className="">
+        <div>
             <Navbar/>
             <SideBar>
                 <CardPost image={testImg}/>
-            </SideBar>        
+            </SideBar>
+           
         </div>
     )
 }

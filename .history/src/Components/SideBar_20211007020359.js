@@ -2,7 +2,7 @@ import React from 'react'
 
 const SideBar = (props) => {
     return (
-                <div className="flex flex-no-wrap h-screen">
+                <div className="flex flex-no-wrap h-full">
                     {/* Sidebar starts */}
                     {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
                     <div className="w-64 absolute sm:relative bg-baseColor shadow md:h-full flex-col justify-between hidden sm:flex">

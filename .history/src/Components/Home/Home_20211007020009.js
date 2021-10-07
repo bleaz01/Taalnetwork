@@ -8,7 +8,7 @@ import testImg from "../assets/workteam.png"
 
 const Home = () => {
     return (
-        <div className="">
+        <div className="h-full">
             <Navbar/>
             <SideBar>
                 <CardPost image={testImg}/>
