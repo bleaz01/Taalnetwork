@@ -11,8 +11,9 @@ const Home = () => {
         <div className="">
             <Navbar/>
             <SideBar>
-            <CardPost image={testImg}/>
-               
+                <div class="bg-local">
+                    <CardPost image={testImg}/>
+                </div>
             </SideBar>        
         </div>
     )
