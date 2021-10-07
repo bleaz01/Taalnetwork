@@ -14,8 +14,7 @@ module.exports = {
      baseColor:"#4337C9",
      secondeColor:"#111827",
      baseTextColor:"#ECEBEF",
-     greyColor:"#F7FAFC",
-     greenColor:"#7ED957"
+     greyColor:""
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],

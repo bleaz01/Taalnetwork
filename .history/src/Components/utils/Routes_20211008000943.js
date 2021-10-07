@@ -5,7 +5,7 @@ import Conjugation from '../Conjugation/Conjugation';
 import Grammar from '../Grammar/Grammar';
 import Home from '../Home/Home';
 import Live from '../Live/Live';
-import Messenger from '../Messenger/Messenger';
+import Contact from '../Messenger/Messenger';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
 import Exercices from '../Exe&Test/Exercices';
@@ -37,8 +37,8 @@ const Routes = () => {
            <Route path='/exercices&test'>
                <Exercices/>
            </Route>
-           <Route path='/messenger'>
-               <Messenger/>
+           <Route path='/contact'>
+               <Contact/>
            </Route>
            <Route path="/register">
                 <Register/>
