@@ -43,6 +43,7 @@ const Routes = () => {
            <Route path="/register">
                 <Register/>
            </Route>
+          
        </Router>
     )
 }

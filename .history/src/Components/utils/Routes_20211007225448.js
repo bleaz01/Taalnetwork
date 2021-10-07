@@ -11,7 +11,7 @@ import Login from '../Auth/Login';
 import Exercices from '../Exe&Test/Exercices';
 
 const Routes = () => {
-    const [loggedIn, setloggedIn] = useState(true)
+    const [loggedIn, setloggedIn] = useState(false)
 
 
     return (
@@ -43,6 +43,7 @@ const Routes = () => {
            <Route path="/register">
                 <Register/>
            </Route>
+          
        </Router>
     )
 }

@@ -8,7 +8,6 @@ import Live from '../Live/Live';
 import Contact from '../Contact/Contact';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
-import Exercices from '../Exe&Test/Exercices';
 
 const Routes = () => {
     const [loggedIn, setloggedIn] = useState(true)
@@ -25,24 +24,24 @@ const Routes = () => {
            <Route path='/grammar'>
                <Grammar/>
            </Route>
-           <Route path='/account'>
-                {loggedIn ? <Account/> : <Redirect to="/login" />}    
-           </Route>
-           <Route path='./conjugation'>
+           <Route path='/conjugation'>
                <Conjugation/>
            </Route>
            <Route path='/live'>
                <Live/>
            </Route>
            <Route path='/exercices&test'>
-               <Exercices/>
+           </Route>
+           <Route path='/account'>
+                {loggedIn ? <Account/> : <Redirect to="/login" />}    
            </Route>
            <Route path='/contact'>
                <Contact/>
            </Route>
-           <Route path="/register">
+           <Route pathe="/register">
                 <Register/>
            </Route>
+          
        </Router>
     )
 }

@@ -11,7 +11,7 @@ import Login from '../Auth/Login';
 import Exercices from '../Exe&Test/Exercices';
 
 const Routes = () => {
-    const [loggedIn, setloggedIn] = useState(true)
+    const [loggedIn, setloggedIn] = useState(false)
 
 
     return (
@@ -19,30 +19,31 @@ const Routes = () => {
            <Route exact path='/'>
                 {loggedIn ? <Home/> : <Redirect to="/login" /> }  
            </Route>
-           <Route path ='/login'>
+           <Route path ='./login'>
                <Login/>
            </Route>
-           <Route path='/grammar'>
+           <Route path='./grammar'>
                <Grammar/>
            </Route>
-           <Route path='/account'>
+           <Route path='./account'>
                 {loggedIn ? <Account/> : <Redirect to="/login" />}    
            </Route>
            <Route path='./conjugation'>
                <Conjugation/>
            </Route>
-           <Route path='/live'>
+           <Route path='./live'>
                <Live/>
            </Route>
-           <Route path='/exercices&test'>
+           <Route path='./exercices&test'>
                <Exercices/>
            </Route>
-           <Route path='/contact'>
+           <Route path='./contact'>
                <Contact/>
            </Route>
-           <Route path="/register">
-                <Register/>
+           <Route pathe="./register">
+                {/* <Register/> */}
            </Route>
+          
        </Router>
     )
 }

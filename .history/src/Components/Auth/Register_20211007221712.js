@@ -65,7 +65,7 @@ const Register = () => {
                                     <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
                                 </div>
                             </div>
-                            <div className="flex justify-items-end">
+                            <div className="mx-auto">
                                 <a href="./login">Login</a>
                             </div>
                         </forms>
