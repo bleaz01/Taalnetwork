@@ -21,8 +21,8 @@ const CardPost = ({image}) => {
               </div>
               <div className="mt-2">
                 <img className="object-cover w-full rounded-lg" src="https://images.unsplash.com/photo-1586398710270-760041494553?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&q=80" alt=""/>
-                <div className="py-2 flex flex-row items-center justify-between">
-                  <div className="flex flex-row">
+                <div className="py-2 flex flex-row items-center">
+                  <>
                   <button className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-5 h-5"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                     <span className="ml-1">3431</span>
@@ -35,11 +35,11 @@ const CardPost = ({image}) => {
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-5 h-5"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
                     <span className="ml-1">340</span>
                   </button>
-                  </div>
+                  </>
                   <div className="flex flex-row-reverse">
-                    <button onClick={()=>setopenFeed(!openFeed)} className="flex flex-row justify-end items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
-                      {/* <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-5 h-5"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg> */}
-                      <span className="ml-1">add comment</span>
+                    <button className="flex flex-row justify-end items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
+                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-5 h-5"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                      <span className="ml-1">340</span>
                     </button>
                   </div>
                 </div>
@@ -48,12 +48,12 @@ const CardPost = ({image}) => {
                 <p className="leading-snug">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ratione dicta deleniti, quas distinctio, veniam quo rem eveniet aliquid repudiandae fuga asperiores reiciendis tenetur? Eius quidem impedit et soluta accusamus.</p>
               </div>
               <div className={`${openFeed === false ? "hidden" : ""}`}>
-                <hr className="opacity-30 mx-4 my-5"/>
+                <hr className="opacity-30"/>
                 <span> Comment </span>
                 <div class="space-y-4">
 
-                  <div className="flex flex-col">
-                    <div className="flex-shrink-0 mb-3 mr-3">
+                  <div className="flex">
+                    <div className="flex-shrink-0 mr-3">
                       <img className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt=""/>
                     </div>
                     <div onClick={()=>setopenComment(!openComment)} className="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
@@ -88,25 +88,8 @@ const CardPost = ({image}) => {
                           </div>
                         </div>
                         </div>
-                      </div> 
-                    </div>
-                    <div class="flex mx-auto items-center shadow-lg mt-4 mx-8 mb-4 max-w-lg">
-                        <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
-                            <div class="flex flex-wrap -mx-3 mb-6">
-                              <div className="flex-shrink-0 mb-3 mr-3">
-                                <img className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt=""/>
-                              </div>
-                              <div class="w-full md:w-full px-3 mb-2 mt-2">
-                                  <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
-                              </div>
-                              <div class="w-full md:w-full flex flex-col-reverse items-end md:w-full px-3">
-                                  <div class="-mr-1">
-                                    <input type='submit' class="bg-white idems-end text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" value='Post Comment'/>
-                                  </div>
-                              </div> 
-                            </div>
-                        </form>
                       </div>
+                    </div>
                   </div>
                 </div>
               </div>

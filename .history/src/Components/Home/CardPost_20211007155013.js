@@ -48,7 +48,7 @@ const CardPost = ({image}) => {
                 <p className="leading-snug">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ratione dicta deleniti, quas distinctio, veniam quo rem eveniet aliquid repudiandae fuga asperiores reiciendis tenetur? Eius quidem impedit et soluta accusamus.</p>
               </div>
               <div className={`${openFeed === false ? "hidden" : ""}`}>
-                <hr className="opacity-30 mx-4 my-5"/>
+                <hr className="opacity-30 mx-4"/>
                 <span> Comment </span>
                 <div class="space-y-4">
 

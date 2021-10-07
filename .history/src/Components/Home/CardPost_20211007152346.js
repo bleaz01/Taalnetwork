@@ -48,12 +48,12 @@ const CardPost = ({image}) => {
                 <p className="leading-snug">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, ratione dicta deleniti, quas distinctio, veniam quo rem eveniet aliquid repudiandae fuga asperiores reiciendis tenetur? Eius quidem impedit et soluta accusamus.</p>
               </div>
               <div className={`${openFeed === false ? "hidden" : ""}`}>
-                <hr className="opacity-30 mx-4 my-5"/>
+                <hr className="opacity-30"/>
                 <span> Comment </span>
                 <div class="space-y-4">
 
-                  <div className="flex flex-col">
-                    <div className="flex-shrink-0 mb-3 mr-3">
+                  <div className="flex">
+                    <div className="flex-shrink-0 mr-3">
                       <img className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt=""/>
                     </div>
                     <div onClick={()=>setopenComment(!openComment)} className="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
@@ -88,25 +88,8 @@ const CardPost = ({image}) => {
                           </div>
                         </div>
                         </div>
-                      </div> 
-                    </div>
-                    <div class="flex mx-auto items-center shadow-lg mt-4 mx-8 mb-4 max-w-lg">
-                        <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
-                            <div class="flex flex-wrap -mx-3 mb-6">
-                              <div className="flex-shrink-0 mb-3 mr-3">
-                                <img className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt=""/>
-                              </div>
-                              <div class="w-full md:w-full px-3 mb-2 mt-2">
-                                  <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
-                              </div>
-                              <div class="w-full md:w-full flex flex-col-reverse items-end md:w-full px-3">
-                                  <div class="-mr-1">
-                                    <input type='submit' class="bg-white idems-end text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" value='Post Comment'/>
-                                  </div>
-                              </div> 
-                            </div>
-                        </form>
                       </div>
+                    </div>
                   </div>
                 </div>
               </div>
