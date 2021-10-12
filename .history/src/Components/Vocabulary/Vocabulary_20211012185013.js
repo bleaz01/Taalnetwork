@@ -1,11 +1,8 @@
-import React,{useState} from 'react'
+import React from 'react'
 import Navbar from '../Navbar'
 import SideBar from '../SideBar'
-import Modal from '../utils/Modal';
 
 const Vocabulary = () => {
-    const [showModal, setShowModal] = useState(false);
-    console.log(showModal,"vacabulary")
     return (
         <div>
             <Navbar/>
@@ -13,11 +10,10 @@ const Vocabulary = () => {
                 <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
                         <div className="text-center pb-12">
                             <h2 className="text-base font-bold text-indigo-600">
-                                Other Categorie 
+                                Other Categorie click here
                             </h2>
-                            <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-baseColor text-blue-500 text-lg rounded-lg hover:bg-baseColor hover:text-baseTextColor focus:border-4 focus:border-blue-300"
-                             onClick={() => setShowModal(true)}
-                            >click here</button>
+                            <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-blue-500 text-blue-500 text-lg rounded-lg hover:bg-blue-500 hover:text-gray-100 focus:border-4 focus:border-blue-300">Primary</button>
+
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
@@ -104,10 +100,6 @@ const Vocabulary = () => {
                         </div>
                     </section>
             </SideBar>
-            <Modal
-             showModal={showModal}
-             setShowModal={setShowModal}
-             />
         </div>
        
     )

@@ -104,10 +104,7 @@ const Vocabulary = () => {
                         </div>
                     </section>
             </SideBar>
-            <Modal
-             showModal={showModal}
-             setShowModal={setShowModal}
-             />
+            <Modal/>
         </div>
        
     )

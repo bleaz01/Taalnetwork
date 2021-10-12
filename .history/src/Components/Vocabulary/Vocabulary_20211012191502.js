@@ -5,7 +5,7 @@ import Modal from '../utils/Modal';
 
 const Vocabulary = () => {
     const [showModal, setShowModal] = useState(false);
-    console.log(showModal,"vacabulary")
+    console.log(showModal)
     return (
         <div>
             <Navbar/>
@@ -104,10 +104,7 @@ const Vocabulary = () => {
                         </div>
                     </section>
             </SideBar>
-            <Modal
-             showModal={showModal}
-             setShowModal={setShowModal}
-             />
+            <Modal/>
         </div>
        
     )
