@@ -13,7 +13,7 @@ const Conjugation = () => {
                         <SearchForm/>
                     </div>
                     <div className="container flex flex-col">
-                        <hr className="my-6 mx-6"/>
+                        <hr className="my-6 mx-10"/>
                         <h3 className="flex justify-center py-3">
                             Le verbe
                         </h3>

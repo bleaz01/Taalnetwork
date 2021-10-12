@@ -9,7 +9,6 @@ import Messenger from '../Messenger/Messenger';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
 import Exercices from '../Exe&Test/Exercices';
-import Vocabulary from '../Vocabulary/Vocabulary';
 
 const Routes = () => {
     const [loggedIn, setloggedIn] = useState(true)
@@ -43,9 +42,6 @@ const Routes = () => {
            </Route>
            <Route path="/register">
                 <Register/>
-           </Route>
-           <Route exact path="/vocabulary">
-                <Vocabulary/>
            </Route>
        </Router>
     )
