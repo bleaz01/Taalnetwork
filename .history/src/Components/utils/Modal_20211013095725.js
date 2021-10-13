@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({showModal,setShowModal,children}) => {
+const Modal = ({showModal,setShowModal}) => {
 
 
     return (
@@ -36,7 +36,7 @@ const Modal = ({showModal,setShowModal,children}) => {
                   </div>
                   {/*body*/}
                   <div className="relative p-6 flex-auto  ">
-                      {/* <div className="flex flex-row overflow-x-auto">
+                      <div className="flex flex-row overflow-x-auto">
                             <a href="" class=" max-w-sm bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
                                 Voitue
                             </a>
@@ -70,8 +70,7 @@ const Modal = ({showModal,setShowModal,children}) => {
                             <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
                                 Click here
                             </a>
-                      </div> */}
-                      {children}
+                      </div>
                   </div>
                   {/*footer*/}
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{use} from 'react'
 import Navbar from '../Navbar'
 import SideBar from '../SideBar'
 import CardPost from './CardPost'
@@ -6,7 +6,6 @@ import Modal from '../utils/Modal'
 
 
 import testImg from "../assets/workteam.png"
-import CreatePostForm from '../utils/Forms/CreatePostForm'
 
 const Home = () => {
 
@@ -26,7 +25,7 @@ const Home = () => {
                             </div>
                                 <div class="w-auto h-auto">
                                     <div class="flex-1 h-full">
-                                    <div onClick={() => setShowModal(true)}class="cursor-pointer flex items-center justify-center flex-1 h-full p-2 bg-baseColor text-whiteColor shadow rounded-full">
+                                    <div onClick={() => console.log('add post')}class="cursor-pointer flex items-center justify-center flex-1 h-full p-2 bg-baseColor text-whiteColor shadow rounded-full">
                                         <div class="relative">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -46,7 +45,7 @@ const Home = () => {
              showModal={showModal}
              setShowModal={setShowModal}
              >
-                <CreatePostForm/>
+
              </Modal>
         </div>
     )

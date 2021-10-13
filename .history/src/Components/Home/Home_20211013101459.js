@@ -6,7 +6,6 @@ import Modal from '../utils/Modal'
 
 
 import testImg from "../assets/workteam.png"
-import CreatePostForm from '../utils/Forms/CreatePostForm'
 
 const Home = () => {
 
@@ -46,7 +45,7 @@ const Home = () => {
              showModal={showModal}
              setShowModal={setShowModal}
              >
-                <CreatePostForm/>
+
              </Modal>
         </div>
     )

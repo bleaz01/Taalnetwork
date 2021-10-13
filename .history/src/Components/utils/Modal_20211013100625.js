@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({showModal,setShowModal,children}) => {
+const Modal = (showModal,setShowModal,props) => {
 
 
     return (
@@ -71,7 +71,7 @@ const Modal = ({showModal,setShowModal,children}) => {
                                 Click here
                             </a>
                       </div> */}
-                      {children}
+                      {props.children}
                   </div>
                   {/*footer*/}
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
