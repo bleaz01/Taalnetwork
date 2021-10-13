@@ -2,7 +2,7 @@ import React from 'react'
 
 const CreatePostForm = () => {
     return (
-<section class="max-w-4xl w-2xl p-6 bg-baseColor rounded-md shadow-md dark:bg-gray-800 mt-20">
+<section class="max-w-4xl w-80 p-6 bg-baseColor rounded-md shadow-md dark:bg-gray-800 mt-20">
     <h1 class="text-xl font-bold text-white capitalize dark:text-white">Account settings</h1>
     <form>
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1">

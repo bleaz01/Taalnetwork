@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../Navbar'
 import SideBar from '../SideBar'
+import CardVerb from '../utils/CardVerb/CardVerb'
 import SearchForm from '../utils/SearchForm'
 
 const Conjugation = () => {
@@ -17,8 +18,15 @@ const Conjugation = () => {
                         <h3 className="flex justify-center py-3">
                             Le verbe
                         </h3>
-                        <div class="flex-1 ...">
-                                salut
+                        <div class="grid lg:grid-rows-2 grid-rows-3  grid-flow-col gap-4 py-10">
+
+                            <CardVerb/>
+                            <CardVerb/>
+                            <CardVerb/>
+                            <CardVerb/>
+                            <CardVerb/>
+                            <CardVerb/>
+                                
                         </div>
 
                     </div>
