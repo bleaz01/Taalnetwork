@@ -19,88 +19,142 @@ const Vocabulary = () => {
                              onClick={() => setShowModal(true)}
                             >click here</button>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Dany Bailey</p>
-                                    <p className="text-base text-gray-400 font-normal">Software Engineer</p>
-                                </div>
-                            </div>
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Lucy Carter</p>
-                                    <p className="text-base text-gray-400 font-normal">Graphic Designer</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            
+                           
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
                                 </div>
                             </div>
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Jade Bradley</p>
-                                    <p className="text-base text-gray-400 font-normal">Dev Ops</p>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
                                 </div>
                             </div>
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Dany Bailey</p>
-                                    <p className="text-base text-gray-400 font-normal">Software Engineer</p>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
                                 </div>
                             </div>
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Lucy Carter</p>
-                                    <p className="text-base text-gray-400 font-normal">Graphic Designer</p>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
                                 </div>
                             </div>
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Jade Bradley</p>
-                                    <p className="text-base text-gray-400 font-normal">Dev Ops</p>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
                                 </div>
                             </div>
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Dany Bailey</p>
-                                    <p className="text-base text-gray-400 font-normal">Software Engineer</p>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
                                 </div>
                             </div>
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Lucy Carter</p>
-                                    <p className="text-base text-gray-400 font-normal">Graphic Designer</p>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
                                 </div>
                             </div>
-                            <div className="w-full bg-greyColor rounded-lg p-12 flex flex-col justify-center items-center">
-                                <div className="mb-8">
-                                    <img className="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80" alt="photo"/>
-                                </div>
-                                <div className="text-center">
-                                    <p className="text-xl text-gray-700 font-bold mb-2">Jade Bradley</p>
-                                    <p className="text-base text-gray-400 font-normal">Dev Ops</p>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
                                 </div>
                             </div>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
+                                </div>
+                            </div>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
+                                </div>
+                            </div>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                        <div class="max-w-sm bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+                            <div id="header" class="flex items-center mb-4"> 
+                                <img alt="avatar" class="w-14 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+                                <div id="header-text" class="leading-5 ml-6 sm">
+                                    <h4 id="name" class="text-l font-semibold">John Doe</h4>
+                                    <h5 id="job" class="font-semibold text-blue-600">Designer</h5>
+                                </div>
+                            </div>
+                            <div id="quote">
+                                <q class="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                            </div>
+                        </div>
+                            
                         </div>
                     </section>
             </SideBar>
@@ -108,38 +162,38 @@ const Vocabulary = () => {
              showModal={showModal}
              setShowModal={setShowModal}
              >
-                  <div className="flex flex-row overflow-x-auto">
-                            <a href="" class=" max-w-sm bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                  <div className="flex flex-wrap">
+                            <a href="" className="flex-1 min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Voitue
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 La famille
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 IT
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Job
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Allimentaire
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Click here
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Click here
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Click here
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Click here
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Click here
                             </a>
-                            <a href="" class="bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                            <a href="" className="flex-1  min-w-1/4 bg-baseColor rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 m-6">
                                 Click here
                             </a>
                             </div>

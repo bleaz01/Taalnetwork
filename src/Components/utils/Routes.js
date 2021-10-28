@@ -10,6 +10,7 @@ import Register from '../Auth/Register';
 import Login from '../Auth/Login';
 import Exercices from '../Exe&Test/Exercices';
 import Vocabulary from '../Vocabulary/Vocabulary';
+import MyExercise from '../MyExercise/MyExercise';
 
 const Routes = () => {
     const [loggedIn, setloggedIn] = useState(true)
@@ -25,6 +26,9 @@ const Routes = () => {
            </Route>
            <Route path='/grammar'>
                <Grammar/>
+           </Route>
+           <Route exact path="/myexercise">
+               <MyExercise/>
            </Route>
            <Route path='/account'>
                 {loggedIn ? <Account/> : <Redirect to="/login" />}    

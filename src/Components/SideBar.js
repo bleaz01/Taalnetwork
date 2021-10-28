@@ -1,6 +1,9 @@
 import React from 'react'
+import {useHistory}from 'react-router-dom'
 
 const SideBar = (props) => {
+
+    const history = useHistory()
     return (
                 <div className="flex flex-no-wrap h-screen">
                     {/* Sidebar starts */}
@@ -25,7 +28,9 @@ const SideBar = (props) => {
                                             <rect x={4} y={14} width={6} height={6} rx={1} />
                                             <rect x={14} y={14} width={6} height={6} rx={1} />
                                         </svg>
-                                        <span className="text-sm ml-2">Dashboard</span>
+                                        <span  onClick={() => history.push('/myexercise')} className="text-sm ml-2">
+                                            Mes exercices 
+                                        </span>
                                     </div>
                                     <div className="py-1 px-3 bg-gray-700 rounded text-gray-100 flex items-center justify-center text-xs">5</div>
                                 </li>
@@ -35,7 +40,9 @@ const SideBar = (props) => {
                                             <path stroke="none" d="M0 0h24v24H0z" />
                                             <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1" />
                                         </svg>
-                                        <span className="text-sm   ml-2">Products</span>
+                                        <span className="text-sm ml-2">
+                                            Mes Posts
+                                        </span>
                                     </div>
                                     <div className="py-1 px-3 bg-gray-700 rounded text-gray-500 flex items-center justify-center text-xs">8</div>
                                 </li>
@@ -46,18 +53,9 @@ const SideBar = (props) => {
                                             <polyline points="8 16 10 10 16 8 14 14 8 16" />
                                             <circle cx={12} cy={12} r={9} />
                                         </svg>
-                                        <span className="text-sm ml-2">Performance</span>
-                                    </div>
-                                </li>
-                                <li className="flex w-full justify-between text-baseTextColor hover:text-gray-500 cursor-pointer items-center mb-6">
-                                    <div className="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-code" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" />
-                                            <polyline points="7 8 3 12 7 16" />
-                                            <polyline points="17 8 21 12 17 16" />
-                                            <line x1={14} y1={4} x2={10} y2={20} />
-                                        </svg>
-                                        <span className="text-sm text-white  ml-2">Deliverables</span>
+                                        <span className="text-sm ml-2">
+                                            Amis
+                                        </span>
                                     </div>
                                 </li>
                                 <li className="flex w-full justify-between text-baseTextColor hover:text-gray-500 cursor-pointer items-center mb-6">
@@ -66,7 +64,9 @@ const SideBar = (props) => {
                                             <path stroke="none" d="M0 0h24v24H0z" />
                                             <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1" />
                                         </svg>
-                                        <span className="text-sm ml-2">Invoices</span>
+                                        <span className="text-sm ml-2">
+                                            Invoices
+                                        </span>
                                     </div>
                                     <div className="py-1 px-3 bg-gray-700 rounded text-gray-500 flex items-center justify-center text-xs">25</div>
                                 </li>
