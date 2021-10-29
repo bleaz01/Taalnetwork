@@ -11,6 +11,7 @@ import Login from '../Auth/Login';
 import Exercices from '../Exe&Test/Exercices';
 import Vocabulary from '../Vocabulary/Vocabulary';
 import MyExercise from '../MyExercise/MyExercise';
+import Index from '../Dashboard/index'
 
 const Routes = () => {
     const [loggedIn, setloggedIn] = useState(true)
@@ -50,6 +51,9 @@ const Routes = () => {
            </Route>
            <Route exact path="/vocabulary">
                 <Vocabulary/>
+           </Route>
+           <Route exact path='/dashboard/id'>
+                    <Index/>
            </Route>
        </Router>
     )
