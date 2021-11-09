@@ -52,8 +52,8 @@ const Routes = () => {
            <Route exact path="/vocabulary">
                 <Vocabulary/>
            </Route>
-           <Route exact path='/dashboard/id'>
-                    <Index/>
+           <Route path='/dashboard'>
+                <Index/>
            </Route>
        </Router>
     )

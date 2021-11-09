@@ -2,7 +2,7 @@ import React from 'react'
 
 const CardExercises = () => {
     return (
-        <div className='flex-1 w-1/3 m-4 xs:w-full'>
+        <div onClick={() => console.log("e")} className='flex-1 w-1/3 m-4 xs:w-full'>
             <div
             className="flex flex-col bg-whiteColor rounded p-4 items-center shadow-lg border-r-8 border-baseColor"
           >

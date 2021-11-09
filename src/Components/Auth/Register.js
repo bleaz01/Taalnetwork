@@ -1,6 +1,7 @@
 import React from 'react'
 
 import bgRegister from "../assets/like.png"
+import UpdateRegister from './UpdateRegister'
 
 const Register = () => {
     return (
@@ -51,6 +52,7 @@ const Register = () => {
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="flex -mx-3">
                                 <div class="w-full px-3 mb-12">
                                     <label for="" class="text-xs font-semibold px-1">Password</label>
@@ -69,6 +71,7 @@ const Register = () => {
                                 <a href="./login">Login</a>
                             </div>
                         </forms>
+                        
                     </div>
                 </div>
             </div>

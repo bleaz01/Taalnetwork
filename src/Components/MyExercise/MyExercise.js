@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../Navbar'
+import SideBar from '../SideBar'
 import SearchForm from '../utils/SearchForm'
 import CardExercises from './Components/CardExercises'
 
@@ -10,6 +11,7 @@ const MyExercise = () => {
     return (
         <div>
             <Navbar/>
+            <SideBar>
             <div className='container'>
                 <div className="bg-greyColor m-5 w-auto h-auto lg:m-10">
                     <div className="w-screen">
@@ -59,7 +61,9 @@ const MyExercise = () => {
                     </div>
                 </div>
             </div>
+            </SideBar>
         </div>
+       
     )
 }
 
