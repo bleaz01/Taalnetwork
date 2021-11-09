@@ -12,6 +12,7 @@ import Exercices from '../Exe&Test/Exercices';
 import Vocabulary from '../Vocabulary/Vocabulary';
 import MyExercise from '../MyExercise/MyExercise';
 import Index from '../Dashboard/index'
+import FormExercise from '../MyExercise/Components/FormExercise';
 
 const Routes = () => {
     const [loggedIn, setloggedIn] = useState(true)
@@ -52,9 +53,13 @@ const Routes = () => {
            <Route exact path="/vocabulary">
                 <Vocabulary/>
            </Route>
+           <Route exact path="/pratis">
+                <FormExercise/>
+           </Route>
            <Route path='/dashboard'>
                 <Index/>
            </Route>
+
        </Router>
     )
 }

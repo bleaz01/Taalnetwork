@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({showModal,setShowModal,children}) => {
+const Modal = ({showModal,setShowModal,children, title}) => {
 
 
     return (
@@ -15,15 +15,15 @@ const Modal = ({showModal,setShowModal,children}) => {
         {showModal ? (
           <>
             <div
-              className=" bg-secondeColor bg-opacity-50 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+              className="bg-secondeColor bg-opacity-50 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
             >
-              <div className="relative w-auto my-6 mx-auto max-w-3xl xl:w-54 h-54">
+              <div className="relative w-auto my-6 mx-auto max-w-3xl xl:w-54 h-full">
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-whiteColor outline-none focus:outline-none">
                   {/*header*/}
-                  <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                  <div className="static flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                     <h3 className="text-2xl font-semibold">
-                        Partager-nous vos pensée
+                       {title ? title : "Partager-nous vos pensée"} 
                     </h3>
                     <button
                       className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
