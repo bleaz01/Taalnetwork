@@ -11,8 +11,11 @@ import Login from '../Auth/Login';
 import Exercices from '../Exe&Test/Exercices';
 import Vocabulary from '../Vocabulary/Vocabulary';
 import MyExercise from '../MyExercise/MyExercise';
-import Index from '../Dashboard/index'
+import Index from '../Dashboard/index';
+import {Index as IndexPayement} from '../Payement' ; 
+
 import FormExercise from '../MyExercise/Components/FormExercise';
+import CardPricing from '../Payement/CardPricing';
 
 const Routes = () => {
     const [loggedIn, setloggedIn] = useState(true)
@@ -59,7 +62,10 @@ const Routes = () => {
            <Route path='/dashboard'>
                 <Index/>
            </Route>
-
+           <Route path='/payement'>
+                <IndexPayement/>
+                {/* <CardPricing/> */}
+           </Route>
        </Router>
     )
 }
