@@ -22,7 +22,9 @@ module.exports = {
      baseTextColor:"#ECEBEF",
      greyColor:"#F7FAFC",
      greenColor:"#7ED957",
-     whiteColor:'#FFF'
+     whiteColor:'#FFF',
+     redColor:"#FA4047",
+     yelColor:"#F0C93E"
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],

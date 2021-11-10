@@ -1,5 +1,7 @@
-import React from 'react';
+import React,{useState} from 'react';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
+import Alert, {Error , Confirmed, Cancelled } from './Alert'
+
 
 const client = {
     sandbox: "AZIw8rY3GPDV9K-GIgjlrrE2z-il-Wy1UAgv6CaDlx6fOmwTUCJdsQFwxuOKCLc25b-rMyEcJR15H1Pm",
@@ -15,28 +17,36 @@ const STATUS ={
     FAILED:"failed"
 }
 
-const onSuccess = (payment) => {
-    // Congratulation, it came here means everything's fine!
-            console.log("The payment was succeeded!", payment);
-            // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
-}
-
-const onCancel = (data) => {
-    // User pressed "cancel" or close Paypal's popup!
-    console.log('The payment was cancelled!', data);
-    // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
-}
-
-const onError = (err) => {
-    // The main Paypal's script cannot be loaded or somethings block the loading of that script!
-    console.log("Error!", err);
-    // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
-    // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
-}
-
 const CardPricing = () => {
+
+    const [status, setStatus] = useState("")
+ 
+    
+
+    const onSuccess = (payment) => {
+            setStatus(STATUS.CONFIRMED)
+                console.log("The payment was succeeded!", payment);
+                // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
+    }
+    
+    const onCancel = (data) => {
+        setStatus(STATUS.CANCELLED)
+        console.log('The payment was cancelled!', data);
+        // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
+    }
+    
+    const onError = (err) => {
+        setStatus(STATUS.FAILED)
+        console.log("Error!", err);
+        // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
+        // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
+    }
+
     return (
         <div className="min-h-screen flex justify-center mx-auto items-center">
+            <div className="flex flex-col">
+
+            
             <div className="flex flex-row">
                 {/* <!-- Basic Card --> */}
                 <div className="w-96 p-8 bg-whiteColor text-center rounded-3xl pr-16 shadow-xl">
@@ -148,17 +158,22 @@ const CardPricing = () => {
                                 <PaypalExpressBtn env={client.env} client={client} currency="EUR" total={150.00} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
 
                             </div>
-                            {/* <p >
-                                <span className="font-medium">
-                                    Choose Plan
-                                </span>
-                               
-                            </p>
-                            </PaypalExpressBtn> */}
+                          
                     </div>
                 </div>
+             
             </div>
+           
+           
+           <div className="pt-16">
+           <Alert.Cancelled status={status === STATUS.CANCELLED}/>
+            <Alert.Error status={status === STATUS.FAILED}/>
+             <Alert.Confirmed status={status === STATUS.CONFIRMED}/>
+           </div>
+           
             </div>
+        </div>
+        
     )
 }
 
