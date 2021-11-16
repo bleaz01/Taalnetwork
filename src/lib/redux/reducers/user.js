@@ -1,7 +1,9 @@
 import {
     CURRENT_USER,
     LOGIN,
-    LOGOUT
+    LOGOUT,
+    UPLOAD_BIO,
+    UPLOAD_PICTURE
 } from  "../actions/actionTypes"
 
 const initialState = {
@@ -23,7 +25,18 @@ const user = (state = initialState, {type, payload})=>{
         case CURRENT_USER:
             console.log(payload)
             return state.user = payload
-
+        case UPLOAD_PICTURE:
+            console.log(payload)
+            return {
+                ...state.user,
+                picture:payload
+            }
+        case UPLOAD_BIO:
+            console.log(payload)
+            return {
+                ...state.user,
+                bio:payload
+            }
         default: 
             return state
     }

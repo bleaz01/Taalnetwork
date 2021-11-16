@@ -40,7 +40,7 @@ const Navbar = () => {
        window.location = '/login'
           
     }
-    // console.log(user.user._profile.data.email, "user")
+    console.log(user, "user")
     return (
         <nav className="bg-white shadow-lg">
             <div className="mx-2 lg:px-6 flex justify-between w-full pl-0">
@@ -105,6 +105,7 @@ const Navbar = () => {
                 <div className="hidden lg:flex justify-end">
                         <a href="/account" className="flex justify-end py-4 px-2">
                             {/* <img src={imgProfil} alt="img profil" className="h-8 w-8 mr-2" /> */}
+                           <span> {user.pseudo}</span>
                         </a>
                         <button onClick={logout}>logout</button>
                 </div>
