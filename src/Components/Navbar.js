@@ -1,12 +1,46 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "./assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { handleLogout } from '../lib/redux/actions/authentication';
+import {useLazyQuery, useMutation, useQuery} from '@apollo/client'
+import { CurrentUSerContext } from './Routes/AppContext';
+import axios from 'axios';
+import cookies from 'js-cookie';
+
+
 const Navbar = () => {
 
-     const [user, setUser] = useState(false)
-     const pathname = window.location.pathname
+    const user = useSelector(state => state.user);
+    // const {uId} = useContext(CurrentUSerContext)
+    const dispatch = useDispatch()
+    const [curentUser, setcurentUser] = useState()
+    const pathname = window.location.pathname
+    const logout = async () => {
 
+        const removeCookie = (key)=>{
+            if(window !== "undefined"){
+                cookies.remove(key,{expires:1})
+            }
+        }
+       try{
+        axios({
+            method:'get',
+            // url:`${process.env.REACT_APP_API_URL}api/user/logout`,
+            url:"http://localhost:4000/api/user/logout",
+            withCredentials:true,
+          }).then((res)=> removeCookie('jwt'))
+          .catch((err)=>{
+                console.log(err)
+          })
+       }catch(err){
+           console.log(err)
+       }
+       window.location = '/login'
+          
+    }
+    // console.log(user.user._profile.data.email, "user")
     return (
         <nav className="bg-white shadow-lg">
             <div className="mx-2 lg:px-6 flex justify-between w-full pl-0">
@@ -70,8 +104,9 @@ const Navbar = () => {
                 </div> 
                 <div className="hidden lg:flex justify-end">
                         <a href="/account" className="flex justify-end py-4 px-2">
-                            <img src={Logo} alt="Logo" className="h-8 w-8 mr-2" />
+                            {/* <img src={imgProfil} alt="img profil" className="h-8 w-8 mr-2" /> */}
                         </a>
+                        <button onClick={logout}>logout</button>
                 </div>
                 <div className="lg:hidden flex my-auto mr-8">
                         <FontAwesomeIcon icon={faBars} size="2x"/>

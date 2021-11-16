@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Account from '../Account/Account';
 import Conjugation from '../Conjugation/Conjugation';
@@ -13,30 +13,49 @@ import Vocabulary from '../Vocabulary/Vocabulary';
 import MyExercise from '../MyExercise/MyExercise';
 import Index from '../Dashboard/index';
 import {Index as IndexPayement} from '../Payement' ; 
-
+import PrivateRoute from './Wrappers/PrivateRoute';
+import NoAuthRoute from './Wrappers/NoAuthRoute';
+import VipRoute from './Wrappers/VipRoute';
 import FormExercise from '../MyExercise/Components/FormExercise';
 import CardPricing from '../Payement/CardPricing';
+import { useDispatch, useSelector } from "react-redux";
+import {useLazyQuery, useMutation, useQuery} from '@apollo/client'
+import { CurrentUSerContext } from '../Routes/AppContext';
 
 const Routes = () => {
     const [loggedIn, setloggedIn] = useState(true)
+    const uId = useContext(CurrentUSerContext)
+    const user = useSelector(state => state.user);
 
+   
+    console.log( uId , "= ui")
+    useEffect(() => {
+       if(uId === null){
+           <Redirect to='login'/>
+       }
+    }, [uId])
 
     return (
+        
        <Router>
-           <Route exact path='/'>
-                {loggedIn ? <Home/> : <Redirect to="/login" /> }  
+           
+           <Route exact path="/">
+                LandingPage
+           </Route>
+           <Route exact path='/home'>
+               <Home/>
            </Route>
            <Route path ='/login'>
                <Login/>
            </Route>
-           <Route path='/grammar'>
+           <Route exact path='/grammar'>
                <Grammar/>
            </Route>
            <Route exact path="/myexercise">
                <MyExercise/>
            </Route>
-           <Route path='/account'>
-                {loggedIn ? <Account/> : <Redirect to="/login" />}    
+           <Route exact path='/account'>
+               <Account/>    
            </Route>
            <Route exact path='/conjugation'>
                <Conjugation/>
@@ -44,7 +63,7 @@ const Routes = () => {
            <Route path='/live'>
                <Live/>
            </Route>
-           <Route path='/exercices&test'>
+           <Route exact path='/exercices&test'>
                <Exercices/>
            </Route>
            <Route path='/messenger'>
@@ -59,13 +78,13 @@ const Routes = () => {
            <Route exact path="/pratis">
                 <FormExercise/>
            </Route>
-           <Route path='/dashboard'>
+           <VipRoute path='/dashboard'>
                 <Index/>
-           </Route>
-           <Route path='/payement'>
+           </VipRoute>
+           <PrivateRoute path='/payement'>
                 <IndexPayement/>
                 {/* <CardPricing/> */}
-           </Route>
+           </PrivateRoute>
        </Router>
     )
 }

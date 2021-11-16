@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
-import Alert, {Error , Confirmed, Cancelled } from './Alert'
+import Alert, {Error , Confirmed, Cancelled } from './Alert';
+import { useHistory } from "react-router-dom";
+
 
 
 const client = {
@@ -20,12 +22,14 @@ const STATUS ={
 const CardPricing = () => {
 
     const [status, setStatus] = useState("")
- 
-    
+    const history = useHistory()
 
     const onSuccess = (payment) => {
             setStatus(STATUS.CONFIRMED)
                 console.log("The payment was succeeded!", payment);
+                setTimeout(() =>{
+                    history.push("/")
+                }, 2000)
                 // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
     }
     
@@ -35,9 +39,11 @@ const CardPricing = () => {
         // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
     }
     
-    const onError = (err) => {
+    const onError = (err)  => {
         setStatus(STATUS.FAILED)
         console.log("Error!", err);
+       
+       
         // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
         // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
     }
@@ -166,9 +172,9 @@ const CardPricing = () => {
            
            
            <div className="pt-16">
-           <Alert.Cancelled status={status === STATUS.CANCELLED}/>
-            <Alert.Error status={status === STATUS.FAILED}/>
-             <Alert.Confirmed status={status === STATUS.CONFIRMED}/>
+                <Alert.Cancelled status={status === STATUS.CANCELLED}/>
+                <Alert.Error status={status === STATUS.FAILED}/>
+                <Alert.Confirmed status={status === STATUS.CONFIRMED}/>
            </div>
            
             </div>
