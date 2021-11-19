@@ -5,11 +5,13 @@ import './index.css';
 import App from './App';
 import configStore from './lib/redux/store'
 import reportWebVitals from './reportWebVitals';
-
+import { getAllUser } from './lib/redux/actions/users';
 
 
 const store = configStore()
-console.log(store,'jj')
+
+store.dispatch(getAllUser())
+
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>

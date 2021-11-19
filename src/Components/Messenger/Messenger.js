@@ -1,117 +1,123 @@
-import React,{useEffect, useState}from 'react'
-import Navbar from '../Navbar'
+import React,{useEffect, useRef,useContext, useState}from 'react'
 import SideBar from "./sideBar"
 import Header from "./Header"
 import Pusher from "pusher-js"
 import axios from 'axios'
-import{useForm}from "react-hook-form"
+import{get, useForm}from "react-hook-form"
 import { useSelector } from 'react-redux'
+import imgBg from '../assets/Dialogue.png'
+import Message from './Message'
+import { UserContext } from '../../lib/context'
+import { dataeParser } from '../utils/function'
 
 
-import instanctUrl from '../../lib/axios'
-import { data } from 'autoprefixer'
+
+
+ 
 
 const Messenger = () => {
   const [messages, setMessages] = useState([])
-  const user = useSelector(state => state.user);
+  const [listRooms, setListRooms] = useState([])    
+  const {user} = useContext(UserContext)
+
+  const currentDiscution = useSelector(state => state.messenger)
+  const [userToRes, setUserToRes] = useState("")
+  const [lastMsg, setLastMsg] = useState("")
+  const [lastTimestamp, setlastTimestamp]=useState('')
+  const scrollRef = useRef()
+  
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const { user:[ {imgProfil, name}]} = user
 
+  const pusher = new Pusher('446a9c83560cab0e7f8d', {
+    cluster: 'eu'
+  });
 
-  const leftMessage = (msg)=>{
-    const {message, name} = msg
-
-    return(
-         <div class="col-start-1 col-end-8 p-3 rounded-lg">    
-         <div class="flex flex-row items-center">
-           <div
-               class="flex items-center justify-center h-10 w-10 rounded-full  flex-shrink-0"
-           >
-             <img src={imgProfil} alt="img profil" className="h-8 w-8 mr-2" />
-           </div>
-           <div
-               class="relative ml-3 text-sm bg-white py-2 px-4 shadow bg-greenColor bg-opacity-50 rounded-xl"
-           >
-              <div>{message}</div>
-           </div>
-         </div>
-       </div>
-    )
+  const getMessages = async()=>{
+    try{
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}api/messagerie/message/${currentDiscution._id}`)
+      setMessages(res.data)
+    }catch(error){
+      console.log(error)
+    }
   }
-  const rightMessage = (msg)=>{
 
-    const {message, name} = msg
-    return(
-    
-          <div class="col-start-6 col-end-13 p-3 rounded-lg">
-          <div class="flex items-center justify-start flex-row-reverse">
-            <div
-                class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
-            >
-             <img src={imgProfil} alt="img profil" className="h-8 w-8 mr-2" />
-            </div>
-            <div
-                class="relative mr-3 text-sm bg-baseColor bg-opacity-50 py-2 px-4 shadow rounded-xl"
-            >
-              <div>{message}</div>
-            </div>
-          </div>
-        </div>
 
-    )
-  }
-  const onSubmit = data => {
-  
-   axios.post('http://localhost:4000/message/new',{
-    message: data.message,
-    received:true,
-    name:name,
-    timestamp:""
-   }).then(
-      response => {
-        console.log(response.data)
-    })
+console.log(currentDiscution, "msg ui")
+  const getListRooms = ()=>{
+      axios({
+          method:'get',
+          url:`${process.env.REACT_APP_API_URL}api/messagerie/conversation/${user._id}`,
+        }).then((res)=> setListRooms(res.data)).then((err)=>{
+          console.log(err)
+        })
+
    
-    
-}
-  useEffect(() => {
-    axios.get('http://localhost:4000/messages/sync').then(
-      response => {
-        setMessages(response.data)})
-     
-  }, [])
-  useEffect(() => {
-      const pusher = new Pusher('446a9c83560cab0e7f8d', {
-        cluster: 'eu'
-      });
-    
-      const channel = pusher.subscribe('messages');
-      channel.bind('inserted', (data) => {
-        setMessages([...messages, data])
-      });
+  }
 
-      return () =>{
-        channel.unbind_all();
-        channel.unsubscribe();
-      }
+
+ console.log(messages,'list')
   
+  const onSubmit = data => {
+
+    // console.log(currentDiscution[0]._id,'send')
+    axios.post(`${process.env.REACT_APP_API_URL}api/messagerie/new/message`,
+    {
+      conversationId:currentDiscution._id,
+      sender: user.pseudo,
+      text: data.message,
+   })
+  }
+console.log(user)
+
+  useEffect(() => {
+    getListRooms()
+    
+  }, [user._id])
+
+  useEffect(() => {
+   getMessages()
+    
+  }, [currentDiscution])
+
+  
+  useEffect(() => {
+    pusher.unsubscribe('messages')
+
+    const channel = pusher.subscribe('messages');
+    channel.bind('inserted', (message) => {
+      setMessages([...messages,message])
+    });
+
+     return ()=>{
+       channel.unbind_all();
+       channel.unsubscribe()
+     }
+  
+  },[messages])
+
+  useEffect(() => {
+   scrollRef.current?.scrollIntoView({behavior:"smooth"})
   }, [messages])
 
  
+
     return (
         <div class="flex flex-row h-screen antialiased text-gray-800">
-          <SideBar/>
+          <SideBar listRooms={listRooms}/>
             <div class="bg-secondeColor flex flex-col h-full w-full bg-white space-y-6 px-4 py-6">
-            <Header/>
+            <Header user={currentDiscution.name}/>
               <div class="bg-greyColor h-full overflow-hidden py-4 rounded-2xl">
                 <div class="h-full overflow-y-auto">
-                  <div class="grid grid-cols-12 gap-y-2">
+                  <div class="flex flex-col gap-y-2">
                   
                   { 
-                    messages.map((msg) =>(
-                     msg.name === name ? rightMessage(msg) : leftMessage(msg)
-                    ))
-                  }     
+                   currentDiscution ? messages.map((msg) =>(
+                      <div className={'flex flex-col'} ref={scrollRef}>
+                        <Message key={msg._id} msg={msg} user= {user}/> 
+                        <small>{dataeParser(msg.createdAt)}</small>  
+                      </div>
+                    )) : <img className='w-2/3 align-middle' src={imgBg}/>
+                  }   
 
                   </div>
                 </div>

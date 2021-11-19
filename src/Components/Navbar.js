@@ -5,18 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { handleLogout } from '../lib/redux/actions/authentication';
 import {useLazyQuery, useMutation, useQuery} from '@apollo/client'
-import { CurrentUSerContext } from './Routes/AppContext';
 import axios from 'axios';
 import cookies from 'js-cookie';
+import { UserContext } from '../lib/context';
 
 
 const Navbar = () => {
+    const {user} = useContext(UserContext)
 
-    const user = useSelector(state => state.user);
+    // const user = useSelector(state => state.user);
     // const {uId} = useContext(CurrentUSerContext)
     const dispatch = useDispatch()
     const [curentUser, setcurentUser] = useState()
     const pathname = window.location.pathname
+
     const logout = async () => {
 
         const removeCookie = (key)=>{
@@ -24,20 +26,15 @@ const Navbar = () => {
                 cookies.remove(key,{expires:1})
             }
         }
-       try{
         axios({
-            method:'get',
-            // url:`${process.env.REACT_APP_API_URL}api/user/logout`,
-            url:"http://localhost:4000/api/user/logout",
-            withCredentials:true,
+            method:'post',
+            url:`${process.env.REACT_APP_API_URL}api/user/logout`,
+            withCredentials:true
           }).then((res)=> removeCookie('jwt'))
           .catch((err)=>{
                 console.log(err)
           })
-       }catch(err){
-           console.log(err)
-       }
-       window.location = '/login'
+        window.location = '/'
           
     }
     console.log(user, "user")

@@ -9,7 +9,13 @@ const PrivateRoute =  ({ children, ...rest }) => {
 
     const [login, setlogin] = useState(false)
     const user = useSelector(state => state.user);
-   console.log(ui)
+    if(ui){
+      console.log('il y a une user ')
+
+    }
+    else if(!ui){
+      console.log('il y pas user')
+    }
      return (
        <Route
          {...rest}
@@ -19,7 +25,7 @@ const PrivateRoute =  ({ children, ...rest }) => {
            ) : (
              <Redirect
                to={{
-                 pathname: "/home",
+                 pathname: "/login",
                  state: { from: location },
                }}
              />

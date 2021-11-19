@@ -1,10 +1,28 @@
-import React from 'react'
+import axios from 'axios'
+import React,{useEffect,useState} from 'react'
+import { useSelector } from 'react-redux'
+import RoomDesign from './RoomDesign'
 
-const SideBar = () => {
+import Pusher from 'pusher-js'
+
+
+const SideBar = (listRooms) => {
+  const pusher = new Pusher('446a9c83560cab0e7f8d', {
+    cluster: 'eu'
+  });     
+  //  const createNewRoom = ( )=>{
+     
+  //   }
+  // useEffect(() => {
+  //   const channel = pusher.subscribe('rooms');
+  //   channel.bind('newRoom', function (data){
+  //     createNewRoom ()
+  //   })
+  // }, [])
     return (
         <div class="bg-secondeColor flex flex-row w-96 flex-shrink-0 bg-gray-100 p-4">
-        <div class="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-baseColor rounded-l-2xl">
-          <a href="#"
+        <div onClick={() => console.log("creer new chat")} class="cursor-pointer flex flex-col items-center py-4 flex-shrink-0 w-20 bg-baseColor rounded-l-2xl">
+          <div href="#"
              class="flex items-center justify-center h-12 w-12 bg-indigo-100 text-indigo-800 rounded-full">
             <svg class="w-8 h-8"
                  fill="none"
@@ -16,10 +34,10 @@ const SideBar = () => {
                     stroke-width="2"
                     d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
             </svg>
-          </a>
+          </div>
           <ul class="flex flex-col space-y-2 mt-12">
             <li>
-              <a href="/"
+              <a href="/home"
                  class="flex items-center">
                 <span class="flex items-center justify-center text-indigo-100 hover:bg-indigo-700 h-12 w-12 rounded-2xl">
                   <svg class="w-6 h-6"
@@ -35,40 +53,7 @@ const SideBar = () => {
                 </span>
               </a>
             </li>
-            <li>
-              <a href="#"
-                 class="flex items-center">
-                <span class="flex items-center justify-center text-indigo-100 hover:bg-indigo-700 h-12 w-12 rounded-2xl">
-                  <svg class="w-6 h-6"
-                       fill="none"
-                       stroke="currentColor"
-                       viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                  </svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#"
-                 class="flex items-center">
-                <span class="flex items-center justify-center text-indigo-100 hover:bg-indigo-700 h-12 w-12 rounded-2xl">
-                  <svg class="w-6 h-6"
-                       fill="none"
-                       stroke="currentColor"
-                       viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                  </svg>
-                </span>
-              </a>
-            </li>
+            
             <li>
               <a href="#"
                  class="flex items-center">
@@ -128,81 +113,22 @@ const SideBar = () => {
           <div class="mt-5">
             <ul class="flex flex-row items-center justify-between">
               <li>
-                <a href="#"
-                   class="flex items-center pb-3 text-xs font-semibold relative text-indigo-800">
-                  <span>All Conversations</span>
-                  <span class="absolute left-0 bottom-0 h-1 w-6 bg-indigo-800 rounded-full"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#"
-                   class="flex items-center pb-3 text-xs text-gray-700 font-semibold">
-                  <span>Archived</span>
-                </a>
-              </li>
-              <li>
-                <a href="#"
-                   class="flex items-center pb-3 text-xs text-gray-700 font-semibold">
-                  <span>Starred</span>
-                </a>
+                <div onClick={()=> console.log('cree groupe')}
+                   class=" cursor-pointer flex items-center pb-3 text-xs font-semibold relative text-indigo-800">
+                  new groupe
+                </div>
               </li>
             </ul>
           </div>
           <div class="mt-5">
             <div class="text-xs text-gray-400 font-semibold uppercase">Team</div>
           </div>
-          <div class="mt-2">
-            <div class="flex flex-col -mx-4">
-
-              <div class="relative flex flex-row items-center bg-baseTextColor p-4">
-                <div class="absolute text-xs text-gray-500 right-0 top-0 mr-4 mt-3">5 min</div>
-                <div class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-pink-300 font-bold flex-shrink-0">
-                  T
-                </div>
-                <div class="flex flex-col flex-grow ml-3">
-                  <div class="text-sm font-medium">Cuberto</div>
-                  <div class="text-xs truncate w-40">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, doloribus?</div>
-                </div>
-                <div class="flex-shrink-0 ml-2 self-end mb-1">
-                  <span class="flex items-center justify-center h-5 w-5 bg-red-500 text-white text-xs rounded-full">5</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mt-5">
-            <div class="text-xs text-gray-400 font-semibold uppercase">Personal</div>
-          </div>
-          <div class="h-full overflow-hidden relative pt-2">
-            <div class="flex flex-col divide-y h-full overflow-y-auto -mx-4 ">
-              <div class="flex flex-row items-center p-4 relative bg-opacity-50 bg-secondeColor  ">
-                <div class="absolute text-xs text-gray-500 right-0 top-0 mr-4 mt-3">2 hours ago</div>
-                <div class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-pink-300 font-bold flex-shrink-0">
-                  T
-                </div>
-                <div class="flex flex-col flex-grow ml-3">
-                  <div class="text-sm font-medium">Flo Steinle</div>
-                  <div class="text-xs truncate w-40">Good after noon! how can i help you?</div>
-                </div>
-                <div class="flex-shrink-0 ml-2 self-end mb-1">
-                  <span class="flex items-center justify-center h-5 w-5 bg-red-500 text-white text-xs rounded-full">3</span>
-                </div>
-              </div>
-            </div>
-            <div class="absolute bottom-0 right-0 mr-2 ">
-              <button class="flex items-center justify-center shadow-sm h-10 w-10 bg-red-500 text-white rounded-full">
-                <svg class="w-6 h-6"
-                     fill="none"
-                     stroke="currentColor"
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
+          {listRooms?.listRooms.map(room =>{
+            return (
+              <RoomDesign data={room} key={room._id}/>
+              
+            )
+          })}
         </div>
       </div>
     )

@@ -21,14 +21,7 @@ const Login = () => {
    
 
     const onSubmit = (data) =>  {
-        //grapql
-
-        // const userEmail = data.email
-        // const userPassword = data.password
-        // handleUserLogin(userEmail, userPassword).then((currentUser) => {
-        //     currentUser && history.push('/home')
-        // }).catch(err=> console.log(err))
-        // if(data.email){
+      
 
         console.log(data)
          axios({
@@ -49,7 +42,6 @@ const Login = () => {
           })
         
      }
-     console.log(emailError, passwordError)
     return (
         <div className="bg-secondeColor ">
         <div class="container  min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5 mx-auto">

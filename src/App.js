@@ -1,42 +1,44 @@
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import React, { Suspense, lazy} from "react";
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import Home from './Components/Home/Home';
+// import Home from './Components/Home/Home';
 import Routes from './Components/utils/Routes';
-import { useDispatch, useSelector } from "react-redux";
-import { RequestAPIAuth } from "./lib/axios";
+// import { useDispatch, useSelector } from "react-redux";
+// import { RequestAPIAuth } from "./lib/axios";
 
-import axios from "axios";
-import { CurrentUSerContext } from "./Components/Routes/AppContext";
-import { getUser } from "./lib/redux/actions/user";
+// import { CurrentUSerContext } from "./Components/Routes/AppContext";
+// import { getUser } from "./lib/redux/actions/user";
+import UserContextProvider from "./lib/context";
 
-function App() {
+const App =()=> {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  // const [user, setUser] = useState(null)
+  // const [uId, setUId] = useState(null)
+  // useEffect(() => {
 
-  const [uId, setUId] = useState(null)
-  useEffect((async () => {
+  //   const fetchToken  = async () =>{
+  //     await axios({
+  //       method:'get',
+  //       url:`${process.env.REACT_APP_API_URL}jtwid`,
+  //       withCredentials:true
+  //     })
+  //       .then((res)=> setUId(res.data))
+  //       .catch((err)=> console.log("no token"))
 
-    await axios({
-      method:'get',
-      url:`${process.env.REACT_APP_API_URL}jtwid`,
-      withCredentials:true
-    }).then((res)=>{
-      setUId(res.data)
-      // console.log(res.data)
-    })
-    if(uId){
-      dispatch(getUser(uId))
+  //   }
 
-    }
-  }), [uId]);
-  const pathname = window.location.pathname
-  console.log(pathname)
+  //   fetchToken()
+    
+  // }, [uId]);
+
+
+  // console.log(user,'user app')
   return (
-    <CurrentUSerContext.Provider value ={uId}>
+    <UserContextProvider>
       <Routes></Routes>
-    </CurrentUSerContext.Provider>
+    </UserContextProvider>
   );
 }
 

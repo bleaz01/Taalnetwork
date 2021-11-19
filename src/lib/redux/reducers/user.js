@@ -11,7 +11,6 @@ const initialState = {
 }
 
 const user = (state = initialState, {type, payload})=>{
-    console.log(state.current,'pel')
     switch(type){
         case LOGIN:
             if(state.user) {

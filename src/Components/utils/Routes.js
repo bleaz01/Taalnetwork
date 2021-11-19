@@ -28,12 +28,11 @@ const Routes = () => {
     const user = useSelector(state => state.user);
 
    
-    console.log( uId , "= ui")
-    useEffect(() => {
-       if(uId === null){
-           <Redirect to='login'/>
-       }
-    }, [uId])
+    // useEffect(() => {
+    //    if(uId === null){
+    //        <Redirect to='login'/>
+    //    }
+    // }, [uId])
 
     return (
         

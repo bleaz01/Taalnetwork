@@ -1,16 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import Navbar from '../Navbar'
 import SideBar from '../SideBar'
 import { useDispatch, useSelector } from "react-redux";
 import UploadeImgAcount from './UploadImgAcount';
 import BioUpdateForm from './BioUpdateForm';
-
+import { UserContext } from '../../lib/context';
 
 const Account = () => {
     const [upload, setUpload] = useState(false)
     const [bioUpdate, setBioUpdate] = useState(false)
-    const user = useSelector(state => state.user)
-    console.log(user)
+    const {user} = useContext(UserContext)
+
     return (
         <div>
             <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"/>
@@ -48,14 +48,14 @@ const Account = () => {
                         </div>
                         <div className="w-full lg:w-4/12 px-4 lg:order-1">
                         <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                            <div className="mr-4 p-3 text-center">
-                            <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">22</span><span class="text-sm text-blueGray-400">Friends</span>
+                            <div onClick={() => console.log("modal following")} className="cursor-pointer mr-4 p-3 text-center">
+                                <span className="c text-xl font-bold block uppercase tracking-wide text-blueGray-600">{user.following ? user.following.length : 0}</span><span class="text-sm text-blueGray-400">Following</span>
                             </div>
-                            <div class="mr-4 p-3 text-center">
-                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">10</span><span class="text-sm text-blueGray-400">Photos</span>
+                            <div onClick={() => console.log("modal followers")} class="cursor-pointer mr-4 p-3 text-center">
+                                <span class=" text-xl font-bold block uppercase tracking-wide text-blueGray-600">{user.followers ? user.followers.length : 0}</span><span class="text-sm text-blueGray-400">Follower</span>
                             </div>
-                            <div class="lg:mr-4 p-3 text-center">
-                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">89</span><span class="text-sm text-blueGray-400">Comments</span>
+                            <div onClick={() => console.log("modal level")} class="cursor-pointer lg:mr-4 p-3 text-center">
+                                <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">B1</span><span class="text-sm text-blueGray-400">Level</span>
                             </div>
                         </div>
                         </div>
