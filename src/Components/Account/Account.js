@@ -36,7 +36,7 @@ const Account = () => {
                         <div className="relative">
                             <img alt="profil-picture" src={user.picture} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"/>
                             <span className='cursor-pointer' onClick={()=> setUpload(!upload)}>updload</span>
-                            {upload ? <UploadeImgAcount/> : null}
+                            {upload ? <UploadeImgAcount user={user._id}/> : null}
                         </div>
                         </div>
                         <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">

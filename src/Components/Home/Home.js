@@ -1,16 +1,26 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
 import Navbar from '../Navbar'
 import SideBar from '../SideBar'
 import CardPost from './CardPost'
 import Modal from '../utils/Modal'
-
-
 import testImg from "../assets/workteam.png"
 import CreatePostForm from '../utils/Forms/CreatePostForm'
+import axios from 'axios'
+import { UserContext } from '../../lib/context'
+import { useDispatch } from 'react-redux'
 
 const Home = () => {
-
+    const [posts, setPosts] = useState([])
     const [showModal, setShowModal] = useState(false);
+    const {user} = useContext(UserContext)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        axios(`${process.env.REACT_APP_API_URL}api/post`)
+        .then((res)=>{
+          setPosts(res.data)
+        })
+      }, [])
 
     return (
         <div className="">
@@ -21,7 +31,7 @@ const Home = () => {
                         <div className="flex justify-between w-full items-center p-2 pl-2 border-transparent">
                             <div className="w-6 flex flex-col items-center">
                                 <div className="flex  relative w-10 h-10 bg-orange-500 justify-center items-center ml-5 m-1 mr-2 w-4 h-4 mt-1 rounded-full ">
-                                    <img className="rounded-full" alt="A" src="https://randomuser.me/api/portraits/men/62.jpg"/> 
+                                    <img className="rounded-full" alt="image user" src={user.picture}/> 
                                 </div>
                             </div>
                                 <div class="w-auto h-auto">
@@ -38,13 +48,19 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            
-            <CardPost image={testImg}/>
+            {posts && posts.map((post)=>{
+                return(
+                    <CardPost image={testImg} post={post}/>
+
+                )
+
+            })}
                
             </SideBar>  
             <Modal
              showModal={showModal}
              setShowModal={setShowModal}
+             title='Create post'
              >
                 <CreatePostForm/>
              </Modal>

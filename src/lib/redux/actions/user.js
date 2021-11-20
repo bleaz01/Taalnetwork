@@ -16,16 +16,15 @@ export const getUser =(uId)=>{
     }
 }
 
-export const uploadPicture = (data,id)=>{
+export const uploadPicture = (file,id)=>{
     return(dispach) =>{
-        axios({
-            method:'post',
-            url:`${process.env.REACT_APP_API_URL}api/user/upload`,
-                data:{
-                   ...data
-                }
-            
-          }).then((res)=>{
+        axios.post(`${process.env.REACT_APP_API_URL}api/user/upload`,
+            {
+                userId:id,
+                file:file,
+
+            }
+          ).then((res)=>{
               return axios
               .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
               .then((res)=>{

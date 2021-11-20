@@ -1,11 +1,14 @@
-import React from 'react'
+import React,{useContext,useSelector } from 'react'
+import { useDispatch } from 'react-redux';
 import { UserContext } from '../../lib/context';
+import { uploadPicture } from '../../lib/redux/actions/user';
 import { isEmpty } from '../utils/function';
-
-
 const Profil = () => {
     const {user} = useContext(UserContext)
 
+
+    
+   
     // useEffect(() => {
         
     // }, [input])

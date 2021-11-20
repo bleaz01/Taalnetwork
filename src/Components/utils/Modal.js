@@ -17,7 +17,7 @@ const Modal = ({showModal,setShowModal,children, title}) => {
             <div
               className="bg-secondeColor bg-opacity-50 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
             >
-              <div className="relative w-auto my-6 mx-auto max-w-3xl xl:w-54 h-full">
+              <div className="relative w-10/12 my-6 mx-auto max-w-3xl xl:w-54 h-full">
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-whiteColor outline-none focus:outline-none">
                   {/*header*/}

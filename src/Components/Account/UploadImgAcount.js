@@ -2,23 +2,33 @@ import axios from 'axios';
 import React from 'react'
 import FileBase64 from 'react-file-base64'
 import { useForm } from "react-hook-form";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { uploadPicture } from '../../lib/redux/actions/user';
-const UploadImgAcount = () => {
+const UploadImgAcount = (user) => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const user = useSelector(state => state.user)
     const dispatch = useDispatch()
-   const onSubmit =(data)=>{
-       
-        const picture = new FormData()
-        picture.append("name",user.pseudo)
-        picture.append("userId", user._id)
-        picture.append('file', data?.img[0].name)
 
-        console.log(picture)
-        dispatch(uploadPicture(picture, user._id))
+    const onSubmit =(data)=>{
+        if (data.img[0]){
+            const reader = new FileReader();
+            reader.readAsDataURL(data.img[0]);
+            reader.onloadend = () => {
+                uploadImage(reader.result, data.message);
+            };
+            reader.onerror = () => {
+                console.error('AHHHHHHHH!!');
+                // setErrMsg('something went wrong!');
+            };
+        }
     }
-
+    const uploadImage = async (base64EncodedImage) => {
+        
+        dispatch(uploadPicture(base64EncodedImage,user.user))
+            
+    };
+ 
+ 
+        
     return (
         <form onSubmit={handleSubmit(onSubmit)} class="mt-8 space-y-3" action="#" method="POST">
      
