@@ -21,14 +21,11 @@ const CreatePostForm = () => {
 
  
 
-  const previewFile = (file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-          setPreviewSource(reader.result);
-      };
+  const previewFile = (e) => {
+      
+    setPreviewSource(URL.createObjectURL(e.target.files[0]));
+      
   };
-
 
   const handleVideo = async (link, msg) => {
     let findLink = link.split(" ");
@@ -135,38 +132,28 @@ const CreatePostForm = () => {
                   </div>
                   <div>
                       <label class="block text-sm font-medium text-whiteColor">
-                      Image
+                      
                       </label>
-                      <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                      {/* <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"> */}
                       <div class="space-y-1 text-center">
-                        <svg class="mx-auto h-12 w-12 text-white" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                          <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
                         <div class="flex items-center justify-center w-full">
-                            <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+                            <label class="flex flex-col rounded-lg w-full h-full p-10 group text-center">
                                 <div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    {/* <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                    </svg>
-                                    <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-                                    <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image"/>
-                                    </div>
+                                    </svg> */}
+                                    {/* <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10"> */}
+                                    <img class="has-mask h-full w-full object-center" src={previewSource ? previewSource :"https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"} alt="freepik image"/>
+                                    {/* </div> */}
                                 </div>
-                                <input {...register('file')} type="file" class=""/>
-                                {previewSource && (
-                                    <img
-                                        src={previewSource}
-                                        alt="chosen"
-                                        style={{ height: '300px' }}
-                                    />
-                                )}
+                                <input {...register('file')} type="file" class="hidden" onChange={(e) => previewFile(e)}/>
                             </label>
                         </div>
-                        <p class="text-xs text-whiteColor">
+                        {/* <p class="text-xs text-whiteColor">
                           PNG, JPG, GIF up to 10MB
-                        </p>
+                        </p> */}
                       </div>
-                    </div>
+                    {/* </div> */}
                   </div>
               </div>
 

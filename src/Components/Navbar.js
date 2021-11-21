@@ -71,12 +71,12 @@ const Navbar = () => {
                             >
                                 Conjugaison
                             </a>
-                            <a
+                            {/* <a
                                 href="/live"
                                 className={`py-4 px-2 text-green-500 ${ pathname === '/live' ? "border-b-4" : '' } border-baseColor font-semibold `}
                             >
                                 Live
-                            </a>
+                            </a> */}
                             <a
                                 href="/exercices&test"
                                 className={`py-4 px-2 text-green-500 ${ pathname === '/exercices&test' ? "border-b-4" : '' } border-baseColor font-semibold `}
@@ -100,11 +100,11 @@ const Navbar = () => {
                     
                 </div> 
                 <div className="hidden lg:flex justify-end">
-                        <a href="/account" className="flex justify-end py-4 px-2">
-                            {/* <img src={imgProfil} alt="img profil" className="h-8 w-8 mr-2" /> */}
-                           <span> {user.pseudo}</span>
-                        </a>
-                        <button onClick={logout}>logout</button>
+                    <a href="/account" className="flex justify-end py-4 px-2">
+                        <img src={user.picture} alt="img profil" className="h-8 w-8 mr-2" />
+                        {/* <span> {user.pseudo}</span> */}
+                    </a>
+                    <button onClick={logout}>logout</button>
                 </div>
                 <div className="lg:hidden flex my-auto mr-8">
                         <FontAwesomeIcon icon={faBars} size="2x"/>

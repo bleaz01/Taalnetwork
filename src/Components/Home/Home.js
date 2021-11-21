@@ -7,26 +7,23 @@ import testImg from "../assets/workteam.png"
 import CreatePostForm from '../utils/Forms/CreatePostForm'
 import axios from 'axios'
 import { UserContext } from '../../lib/context'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getPost } from '../../lib/redux/actions/post'
 
 const Home = () => {
-    const [posts, setPosts] = useState([])
-    const [reload, setReload] = useState(true)
+    // const [reload, setReload] = useState(true)
     const [showModal, setShowModal] = useState(false);
+    const posts = useSelector((state) => state.post);
+
     const {user} = useContext(UserContext)
     const dispatch = useDispatch()
 
+    console.log(posts, "mes post")
     useEffect(() => {
-        if(reload){
-            axios.get(`${process.env.REACT_APP_API_URL}api/post`)
-            .then((res)=>{
-                const array = res.data.slice(0, 5)
-                setPosts(array)
-                setReload(false)
-          })
-        }
+       
+        dispatch(getPost())
     
-      }, [])
+      }, [posts])
 
     return (
         <div className="">

@@ -71,7 +71,7 @@ const Routes = () => {
            <Route path="/register">
                 <Register/>
            </Route>
-           <Route exact path="/vocabulary">
+           <Route path="/vocabulary">
                 <Vocabulary/>
            </Route>
            <Route exact path="/pratis">
