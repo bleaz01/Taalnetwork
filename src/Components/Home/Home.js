@@ -11,15 +11,21 @@ import { useDispatch } from 'react-redux'
 
 const Home = () => {
     const [posts, setPosts] = useState([])
+    const [reload, setReload] = useState(true)
     const [showModal, setShowModal] = useState(false);
     const {user} = useContext(UserContext)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        axios(`${process.env.REACT_APP_API_URL}api/post`)
-        .then((res)=>{
-          setPosts(res.data)
-        })
+        if(reload){
+            axios.get(`${process.env.REACT_APP_API_URL}api/post`)
+            .then((res)=>{
+                const array = res.data.slice(0, 5)
+                setPosts(array)
+                setReload(false)
+          })
+        }
+    
       }, [])
 
     return (
@@ -49,6 +55,7 @@ const Home = () => {
                     </div>
                 </div>
             {posts && posts.map((post)=>{
+                console.log(post)
                 return(
                     <CardPost image={testImg} post={post}/>
 

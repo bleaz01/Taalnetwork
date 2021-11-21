@@ -17,6 +17,8 @@ const CreatePostForm = () => {
   const [selectedFile, setSelectedFile] = useState();
   const [successMsg, setSuccessMsg] = useState('');
   const [errMsg, setErrMsg] = useState('');
+  const [video, setVideo] = useState("");
+
  
 
   const previewFile = (file) => {
@@ -28,7 +30,36 @@ const CreatePostForm = () => {
   };
 
 
-
+  const handleVideo = async (link, msg) => {
+    let findLink = link.split(" ");
+    for (let i = 0; i < findLink.length; i++) {
+      if (
+        findLink[i].includes("https://www.youtube") ||
+        findLink[i].includes("https://yout")
+      ) {
+        let embed = findLink[i].replace("watch?v=", "embed/");
+        // setVideo(embed.split("&")[0]);
+        // findLink.splice(i, 1);
+        
+        const post = {
+          message:msg,
+          video:embed.split("&")[0],
+          posterID:user._id
+        }
+        console.log(post)
+        try {
+         await axios.post(`${process.env.REACT_APP_API_URL}api/post`,{post})
+           console.log("ssssssssss")
+          // setFileInputState('');
+          // setPreviewSource('');
+            // setSuccessMsg('Image uploaded successfully');
+        } catch (err) {
+            console.error(err);
+            setErrMsg('Something went wrong!');
+        }
+      }
+    }
+  };
   const uploadImage = async (base64EncodedImage,msg) => {
    
     const post = {
@@ -51,6 +82,11 @@ const CreatePostForm = () => {
   };
 
   const onSubmit = data => {
+
+    if(data.video){
+      handleVideo(data.video,data.message)
+      return console.log("viedo poster")
+    }
     const post = {
       message:data.message,
       posterID:user._id
@@ -82,6 +118,7 @@ const CreatePostForm = () => {
    
   }
 
+ 
 
  
     return (
@@ -92,6 +129,9 @@ const CreatePostForm = () => {
               <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1">
               <div>
                   <textarea {...register('message')} id="textarea" type="textarea" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" placeholder="Qu'elle est ton poin vue"></textarea>
+                  <input {...register('video') } className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" placeholder="Lien vidéo"/>
+                 
+
                   </div>
                   <div>
                       <label class="block text-sm font-medium text-whiteColor">
@@ -112,7 +152,7 @@ const CreatePostForm = () => {
                                     <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image"/>
                                     </div>
                                 </div>
-                                <input {...register('file')}type="file" class=""/>
+                                <input {...register('file')} type="file" class=""/>
                                 {previewSource && (
                                     <img
                                         src={previewSource}

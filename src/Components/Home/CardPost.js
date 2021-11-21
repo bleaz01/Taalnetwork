@@ -4,11 +4,14 @@ import{useForm}from "react-hook-form"
 import axios from 'axios'
 import { UserContext } from '../../lib/context'
 import { useDispatch } from 'react-redux'
-import { likePost } from '../../lib/redux/actions/post'
+import { correctionPost, likePost, unlikePost } from '../../lib/redux/actions/post'
+// import { fas } from 'fontawesome.macro'
 
 const CardPost = ({image, post}) => {
     const [openFeed, setopenFeed] = useState(false)
     const [openComment, setopenComment] = useState(false)
+    const [textUpdate, setTextUpdate] = useState('')
+    const [modify, setModify] = useState(false)
     const [liked, setLiked] = useState(false)
     const {user} = useContext(UserContext)
     const dispatch =  useDispatch()
@@ -26,9 +29,22 @@ const CardPost = ({image, post}) => {
         text:data.text
       })
     }
-
+    const sendCorrectiont =async ()=>{
+      console.log('nodify to user')
+      if(setTextUpdate !== post?.message){
+        dispatch(correctionPost(post._id,textUpdate))
+        setModify(false)
+      }
+      return null
+    }
     const like = ()=>{
       dispatch(likePost(post._id, user._id))
+      setLiked(true)
+    }
+
+    const unlike = ()=>{
+      dispatch(unlikePost(post._id, user._id))
+      setLiked(false)
     }
     // useEffect(() => {
     //   if(post?.likers.length > 0){
@@ -57,18 +73,43 @@ const CardPost = ({image, post}) => {
               </div>
               <div className="mt-2">
               <div className="py-2">
-                <p className="leading-snug">{post?.message}</p>
+                {modify === false  && <p className="leading-snug">{post?.message}</p> }
+                {
+                  modify
+                  &&
+                  <div>
+                   <textarea className='w-full bg-baseColor text-whiteColor rounded-lg pl-3 pt-2'
+                      defaultValue={post?.message}
+                      onChange={(e) => setTextUpdate(e.target.value)}
+                  ></textarea> 
+                  <button onClick={()=> sendCorrectiont()}>
+                        send Correctiont
+                  </button>
+                  </div>
+
+                }
+                <small onClick={() =>setModify(!modify)} className="">correction</small>
               </div>
               { post?.file !== undefined
                 ? (
                 <div class="flex-shrink-0 mr-3">
-                                  {/* <img className="object-cover w-full rounded-lg" src="https://images.unsplash.com/photo-1586398710270-760041494553?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&q=80" alt=""/> */}
                     <img className="object-cover w-full rounded-lg" src={post?.file} alt={"file post"}/>
 
                   </div>)
                   :null
-
                   }
+                  {post?.video && (
+                    
+                      <iframe
+                        width="100%"
+                        height="450px"
+                        src={post?.video}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={post?.video}
+                      ></iframe>
+                    )}
                 <div className="py-2 flex flex-row items-center justify-between">
                   <div className="flex flex-row">
                   <button onClick={()=> like()} className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
@@ -87,7 +128,7 @@ const CardPost = ({image, post}) => {
                   <div className="flex flex-row-reverse">
                     <button onClick={()=>setopenFeed(!openFeed)} className="flex flex-row justify-end items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
                       {/* <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-5 h-5"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg> */}
-                      <span className="ml-1">add comment</span>
+                      <span className="cursor-pointer ml-1">Show comment</span>
                     </button>
                   </div>
                 </div>
