@@ -43,7 +43,7 @@ const Navbar = () => {
             <div className="mx-2 lg:px-6 flex justify-between w-full pl-0">
                 <div className="flex justify-between">
                     <div className="flex space-x-14">
-                        <div>
+                        <div className="flex align-middle">
                             <a href="#" className="flex items-center py-4 px-2">
                                 <img src={Logo} alt="Logo" className="h-8 w-8 mr-2" />
                                 <span className="hidden sm:flex font-semibold text-gray-500 text-lg">
@@ -99,12 +99,14 @@ const Navbar = () => {
                     </div>
                     
                 </div> 
-                <div className="hidden lg:flex justify-end">
-                    <a href="/account" className="flex justify-end py-4 px-2">
-                        <img src={user.picture} alt="img profil" className="h-8 w-8 mr-2" />
+                <div className="hidden lg:flex  my-auto justify-end">
+                    <a href="/account" className="flex justify-end ">
+                        <img src={user.picture} alt="img profil" className="rounded-full h-8 w-8 mr-2" />
                         {/* <span> {user.pseudo}</span> */}
                     </a>
-                    <button onClick={logout}>logout</button>
+                    <div className="flex align-middle" onClick={logout} >
+                        <img  className='h-8 w-8 text-baseColor' src="https://img.icons8.com/ios/50/000000/logout-rounded.png"/>
+                    </div>
                 </div>
                 <div className="lg:hidden flex my-auto mr-8">
                         <FontAwesomeIcon icon={faBars} size="2x"/>

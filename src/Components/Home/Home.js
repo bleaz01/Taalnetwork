@@ -18,12 +18,11 @@ const Home = () => {
     const {user} = useContext(UserContext)
     const dispatch = useDispatch()
 
-    console.log(posts, "mes post")
     useEffect(() => {
        
         dispatch(getPost())
     
-      }, [posts])
+      }, [])
 
     return (
         <div className="">
@@ -34,7 +33,7 @@ const Home = () => {
                         <div className="flex justify-between w-full items-center p-2 pl-2 border-transparent">
                             <div className="w-6 flex flex-col items-center">
                                 <div className="flex  relative w-10 h-10 bg-orange-500 justify-center items-center ml-5 m-1 mr-2 w-4 h-4 mt-1 rounded-full ">
-                                    <img className="rounded-full" alt="image user" src={user.picture}/> 
+                                    <img className="rounded-full h-10 w-10 " alt="image user" src={user.picture}/> 
                                 </div>
                             </div>
                                 <div class="w-auto h-auto">
@@ -54,7 +53,7 @@ const Home = () => {
             {posts && posts.map((post)=>{
                 console.log(post)
                 return(
-                    <CardPost image={testImg} post={post}/>
+                    <CardPost key={post._id} image={testImg} post={post}/>
 
                 )
 

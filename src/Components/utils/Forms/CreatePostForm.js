@@ -41,7 +41,9 @@ const CreatePostForm = () => {
         const post = {
           message:msg,
           video:embed.split("&")[0],
-          posterID:user._id
+          posterID:user._id,
+          posterImg:user.picture
+
         }
         console.log(post)
         try {
@@ -62,7 +64,8 @@ const CreatePostForm = () => {
     const post = {
       message:msg,
       file:base64EncodedImage,
-      posterID:user._id
+      posterID:user._id,
+      posterImg:user.picture
     }
     console.log(post)
       try {
@@ -86,18 +89,12 @@ const CreatePostForm = () => {
     }
     const post = {
       message:data.message,
-      posterID:user._id
+      posterID:user._id,
+      posterImg:user.picture
+
     }
     if (data.file[0]){
-      const reader = new FileReader();
-      reader.readAsDataURL(data.file[0]);
-      reader.onloadend = () => {
-          uploadImage(reader.result, data.message);
-      };
-      reader.onerror = () => {
-          console.error('AHHHHHHHH!!');
-          // setErrMsg('something went wrong!');
-      };
+      console.log(data.file[0], "yoo")
     }else{
        try {
           axios.post(`${process.env.REACT_APP_API_URL}api/post`,{
@@ -111,7 +108,7 @@ const CreatePostForm = () => {
           setErrMsg('Something went wrong!');
       }
     }
-      
+    // history.push('/home')
    
   }
 
@@ -127,33 +124,21 @@ const CreatePostForm = () => {
               <div>
                   <textarea {...register('message')} id="textarea" type="textarea" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" placeholder="Qu'elle est ton poin vue"></textarea>
                   <input {...register('video') } className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" placeholder="Lien vidéo"/>
-                 
-
                   </div>
                   <div>
                       <label class="block text-sm font-medium text-whiteColor">
                       
                       </label>
-                      {/* <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"> */}
                       <div class="space-y-1 text-center">
                         <div class="flex items-center justify-center w-full">
                             <label class="flex flex-col rounded-lg w-full h-full p-10 group text-center">
-                                <div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
-                                    {/* <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                    </svg> */}
-                                    {/* <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10"> */}
+                                <div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">                      
                                     <img class="has-mask h-full w-full object-center" src={previewSource ? previewSource :"https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"} alt="freepik image"/>
-                                    {/* </div> */}
                                 </div>
                                 <input {...register('file')} type="file" class="hidden" onChange={(e) => previewFile(e)}/>
                             </label>
                         </div>
-                        {/* <p class="text-xs text-whiteColor">
-                          PNG, JPG, GIF up to 10MB
-                        </p> */}
                       </div>
-                    {/* </div> */}
                   </div>
               </div>
 

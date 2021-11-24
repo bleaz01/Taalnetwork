@@ -56,7 +56,7 @@ const Routes = () => {
            <Route exact path='/account'>
                <Account/>    
            </Route>
-           <Route exact path='/conjugation'>
+           <Route path='/conjugation'>
                <Conjugation/>
            </Route>
            <Route path='/live'>

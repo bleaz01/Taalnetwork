@@ -26,7 +26,9 @@ const CardPost = ({image, post}) => {
       axios.patch(`${process.env.REACT_APP_API_URL}api/post/comment-post/${post._id}`,{
         commenterId:user._id,
         commenterPseudo:user.pseudo,
+        commenterUserImg:user.picture,
         text:data.text
+
       })
     }
     const sendCorrectiont =async ()=>{
@@ -54,6 +56,7 @@ const CardPost = ({image, post}) => {
     //   }
    
     // }, [user._id, liked, post?.likers])
+
     return (
           <div className="grid grid-cols-1 gap-6 my-6 px-4 md:px-6 lg:px-8">
             <div className={
@@ -63,7 +66,7 @@ const CardPost = ({image, post}) => {
               <div className="py-2 flex flex-row items-center justify-between">
                 <div className="flex flex-row items-center">
                   <a href="#" className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
-                    <img className="rounded-full h-8 w-8 object-cover" src="https://images.unsplash.com/photo-1520065786657-b71a007dd8a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=80" alt=""/>
+                    <img className="rounded-full h-8 w-8 object-cover" src={post?.posterImg} alt=""/>
                     <p className="ml-2 text-base font-medium">Jon Doe</p>
                   </a>
                 </div>
@@ -126,7 +129,7 @@ const CardPost = ({image, post}) => {
                   </button> */}
                   </div>
                   <div className="flex flex-row-reverse">
-                    <button onClick={()=>setopenFeed(!openFeed)} className="flex flex-row justify-end items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
+                    <button onClick={()=> setopenFeed(!openFeed)} className="flex flex-row justify-end items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
                       {/* <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-5 h-5"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg> */}
                       <span className="cursor-pointer ml-1">Show comment</span>
                     </button>

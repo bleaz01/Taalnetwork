@@ -4,14 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { uploadBio } from '../../lib/redux/actions/user';
 
 
-const BioUpdateForm = () => {
+const BioUpdateForm = ({user}) => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const user = useSelector(state => state.user)
     const dispatch = useDispatch()
 
     const onSubmit = data =>{
-        console.log(data)
-        dispatch(uploadBio(data.bio, user._id))
+        console.log(data.bio, user)
+        dispatch(uploadBio(data.bio, user))
         window.location = '/account'
 
 

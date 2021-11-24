@@ -12,8 +12,7 @@ const Message = ({msg, user}) => {
               <div
                   className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
               >
-                B
-               {/* <img src={imgProfil} alt="img profil" className="h-8 w-8 mr-2" /> */}
+               <img src={msg.senderImg} alt="img profil" className="rounded-2xl h-8 w-8 mr-2" />
               </div>
               <div
                   className="relative mr-3 text-sm bg-baseColor bg-opacity-50 py-2 px-4 shadow rounded-xl"
@@ -21,7 +20,7 @@ const Message = ({msg, user}) => {
                     
               >
                 <div>{msg.text}</div>
-                <small>{msg.timestamp}</small>
+                {/* <small>{msg.timestamp}</small> */}
               </div>
             </div>
           </div>

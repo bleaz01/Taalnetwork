@@ -3,7 +3,7 @@ import SideBar from "./sideBar"
 import Header from "./Header"
 import Pusher from "pusher-js"
 import axios from 'axios'
-import{get, useForm}from "react-hook-form"
+import{ useForm}from "react-hook-form"
 import { useSelector } from 'react-redux'
 import imgBg from '../assets/Dialogue.png'
 import Message from './Message'
@@ -64,6 +64,7 @@ console.log(currentDiscution, "msg ui")
     {
       conversationId:currentDiscution._id,
       sender: user.pseudo,
+      senderImg: user.picture,
       text: data.message,
    })
   }
@@ -100,12 +101,13 @@ console.log(user)
   }, [messages])
 
  
+  console.log(currentDiscution,'img')
 
     return (
         <div class="flex flex-row h-screen antialiased text-gray-800">
           <SideBar listRooms={listRooms}/>
             <div class="bg-secondeColor flex flex-col h-full w-full bg-white space-y-6 px-4 py-6">
-            <Header user={currentDiscution.name}/>
+            <Header user={currentDiscution.conversationImg}/>
               <div class="bg-greyColor h-full overflow-hidden py-4 rounded-2xl">
                 <div class="h-full overflow-y-auto">
                   <div class="flex flex-col gap-y-2">

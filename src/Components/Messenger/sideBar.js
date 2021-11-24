@@ -1,18 +1,17 @@
 import axios from 'axios'
-import React,{useEffect,useState} from 'react'
+import React,{useContext, useEffect,useState} from 'react'
 import { useSelector } from 'react-redux'
 import RoomDesign from './RoomDesign'
-
+import { UserContext } from '../../lib/context'
 import Pusher from 'pusher-js'
+import FriendsList from './FriendsList'
 
 
 const SideBar = (listRooms) => {
-  const pusher = new Pusher('446a9c83560cab0e7f8d', {
-    cluster: 'eu'
-  });     
-  //  const createNewRoom = ( )=>{
-     
-  //   }
+  const [openCreategroup, setopenCreategroup] = useState(false)
+ const [nameGroup, setNameGroup] = useState()
+ const {user} = useContext(UserContext)
+console.log(user,"amis")
   // useEffect(() => {
   //   const channel = pusher.subscribe('rooms');
   //   channel.bind('newRoom', function (data){
@@ -113,13 +112,35 @@ const SideBar = (listRooms) => {
           <div class="mt-5">
             <ul class="flex flex-row items-center justify-between">
               <li>
-                <div onClick={()=> console.log('cree groupe')}
+                <div onClick={()=> setopenCreategroup(!openCreategroup)}
                    class=" cursor-pointer flex items-center pb-3 text-xs font-semibold relative text-indigo-800">
                   new groupe
                 </div>
               </li>
             </ul>
           </div>
+          {openCreategroup
+           ? 
+           <>
+
+           <div class="mt-5">
+              <div class="text-xs text-gray-400 font-semibold uppercase">Followers</div>
+          </div>
+          <div>
+            <form>
+              <input className="w-full my-3 pl-2" placeholder="Name group" type="text" defaultValue={(e) => setNameGroup(e.prevant.default)}/>
+            </form>
+          </div>
+          {
+          user?.following.map(user =>{
+            
+              return (
+                <FriendsList user={user}/>
+              )
+            })}
+          </>
+          :
+          <>
           <div class="mt-5">
             <div class="text-xs text-gray-400 font-semibold uppercase">Team</div>
           </div>
@@ -129,6 +150,8 @@ const SideBar = (listRooms) => {
               
             )
           })}
+          </>
+          }
         </div>
       </div>
     )

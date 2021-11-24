@@ -6,11 +6,11 @@ const header = ({user}) => {
     return (
         <div class="bg-greenColor flex flex-row items-center py-4 px-6 rounded-2xl shadow">
         <div class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-pink-100">
-          T
+        <img src={user} alt="img profil" className="rounded-2xl h-8 w-8 mr-2" />
 
         </div>
         <div class="flex flex-col ml-3">
-          <div class="font-semibold text-sm">{user}</div>
+          {/* <div class="font-semibold text-sm">{user}</div> */}
           <div class="text-xs text-gray-500">Active</div>
         </div>
         <div class="ml-auto">
