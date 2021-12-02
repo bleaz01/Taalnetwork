@@ -2,9 +2,9 @@ import React,{useEffect, useState, useContext} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { handleLogout } from '../lib/redux/actions/authentication';
-import {useLazyQuery, useMutation, useQuery} from '@apollo/client'
+import { faBars, faCoffee, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
+// import { handleLogout } from '../lib/redux/actions/authentication';
+// import {useLazyQuery, useMutation, useQuery} from '@apollo/client'
 import axios from 'axios';
 import cookies from 'js-cookie';
 import { UserContext } from '../lib/context';
@@ -13,8 +13,6 @@ import { UserContext } from '../lib/context';
 const Navbar = () => {
     const {user} = useContext(UserContext)
 
-    // const user = useSelector(state => state.user);
-    // const {uId} = useContext(CurrentUSerContext)
     const dispatch = useDispatch()
     const [curentUser, setcurentUser] = useState()
     const pathname = window.location.pathname
@@ -105,7 +103,8 @@ const Navbar = () => {
                         {/* <span> {user.pseudo}</span> */}
                     </a>
                     <div className="flex align-middle" onClick={logout} >
-                        <img  className='h-8 w-8 text-baseColor' src="https://img.icons8.com/ios/50/000000/logout-rounded.png"/>
+                        <FontAwesomeIcon classeName="text-baseColor " icon={faSignOutAlt} size="2x"/>
+
                     </div>
                 </div>
                 <div className="lg:hidden flex my-auto mr-8">

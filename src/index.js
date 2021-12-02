@@ -5,12 +5,12 @@ import './index.css';
 import App from './App';
 import configStore from './lib/redux/store'
 import reportWebVitals from './reportWebVitals';
-import { getAllUser } from './lib/redux/actions/users';
+// import { getAllUser } from './lib/redux/actions/users';
 
 
-const store = configStore()
+export const store = configStore()
 
-store.dispatch(getAllUser())
+// store.dispatch(getAllUser())
 
 ReactDOM.render(
   <React.StrictMode>

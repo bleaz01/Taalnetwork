@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Message = ({msg, user}) => {
-    console.log(msg.sender,'============',user.pseudo)
 
     return (
         msg.sender == user.pseudo 
@@ -32,8 +31,8 @@ const Message = ({msg, user}) => {
               <div
                   class="flex items-center justify-center h-10 w-10 rounded-full  flex-shrink-0"
               >
-                A
-                {/* <img src={imgProfil} alt="img profil" className="h-8 w-8 mr-2" /> */}
+                
+                <img src={msg.senderImg} alt="img profil" className="h-8 w-8 mr-2" />
               </div>
               <div
                   class="relative ml-3 text-sm bg-white py-2 px-4 shadow bg-greenColor bg-opacity-50 rounded-xl"
@@ -42,13 +41,6 @@ const Message = ({msg, user}) => {
               </div>
             </div>
           </div>
-
-
-
-
-
-
-           
 
             )
 

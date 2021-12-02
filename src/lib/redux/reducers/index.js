@@ -4,6 +4,7 @@ import user from "./user";
 import users from "./users";
 import messenger from "./messenger";
 import post from "./post"
+import meet from "./meet"
 
 
 const reducers = combineReducers({
@@ -11,6 +12,7 @@ const reducers = combineReducers({
     user,
     users,
     messenger,
+    meet,
 })
 
 

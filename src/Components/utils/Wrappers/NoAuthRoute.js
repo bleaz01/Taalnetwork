@@ -2,25 +2,27 @@ import React, { useContext, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CurrentUSerContext } from "../../Routes/AppContext";
-import UserContextProvider from "../../../lib/context";
+import UserContextProvider, { UserContext } from "../../../lib/context";
 
 const NoAuthRoute = ({ children, ...rest }) => {
-const ui =true
-  const {user} = useContext(UserContextProvider)
-  console.log(user, 'mon user')
+  
+const {user,cookietoken } = useContext(UserContext)
+if(user){
+    console.log('il y pa user')
+  }  
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        !ui ? (
-          children
-        ) : (
+        user && cookietoken ? (
           <Redirect
-          to={{
-            pathname: "/",
-            state: { from: location },
-          }}
-        />
+            to={{
+              pathname: "/home",
+              state: { from: location },
+            }}
+          />
+        ) : (
+          children
         )
       }
     />

@@ -1,18 +1,32 @@
-import React,{useContext,useSelector } from 'react'
+import axios from 'axios';
+import React,{useContext,useSelector, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router';
 import { UserContext } from '../../lib/context';
 import { uploadPicture } from '../../lib/redux/actions/user';
 import { isEmpty } from '../utils/function';
+
+
 const Profil = () => {
+    const location = useLocation()
     const {user} = useContext(UserContext)
-
-
+    const url = location.pathname.split('/')[2]
+    const [profilUser, setProfilUser] = useState("")
     
-   
-    // useEffect(() => {
-        
-    // }, [input])
+   const followers = ()=>{
 
+        axios.patch(`${process.env.REACT_APP_API_URL}api/user/follow/`,{
+            myId:user._id,
+            followerId:profilUser._id
+        })
+   }
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_URL}api/user/${url}`).then((res)=>{
+            setProfilUser(res.data)
+            console.log(res)
+        })
+    }, [url])
+    console.log(profilUser,'userProfil')
     return (
         <div>
         <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"/>
@@ -36,8 +50,7 @@ const Profil = () => {
                 <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                     <div className="relative">
-                        <img alt="profil-picture" src={user.picture} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"/>
-                        <span className='cursor-pointer' onClick={}>updload</span>
+                        <img alt="profil-picture" src={profilUser.picture} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"/>
                         
                     </div>
                     </div>
@@ -46,34 +59,36 @@ const Profil = () => {
                         <button className="bg-baseColor active:bg-opacity-25 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
                             <a href='/home'>Home</a>
                         </button>
+                        <button onClick={() => followers()} className="bg-baseColor active:bg-opacity-25 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
+                           Follow
+                        </button>
                     </div>
                     </div>
                     <div className="w-full lg:w-4/12 px-4 lg:order-1">
                     <div className="flex justify-center py-4 lg:pt-4 pt-8">
                         <div onClick={() => console.log("modal following")} className="cursor-pointer mr-4 p-3 text-center">
-                            {/* <span className="c text-xl font-bold block uppercase tracking-wide text-blueGray-600">{user.following ? user.following.length : 0}</span><span class="text-sm text-blueGray-400">Following</span> */}
+                            <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{profilUser.following ?profilUser.following.length : 0}</span><span class="text-sm text-blueGray-400">Following</span>
                         </div>
                         <div onClick={() => console.log("modal followers")} class="cursor-pointer mr-4 p-3 text-center">
-                            {/* <span class=" text-xl font-bold block uppercase tracking-wide text-blueGray-600">{user.followers ? user.followers.length : 0}</span><span class="text-sm text-blueGray-400">Follower</span> */}
+                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{profilUser.followers ? profilUser.followers.length : 0}</span><span class="text-sm text-blueGray-400">Follower</span>
                         </div>
                         <div onClick={() => console.log("modal level")} class="cursor-pointer lg:mr-4 p-3 text-center">
-                            {/* <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">B1</span><span class="text-sm text-blueGray-400">Level</span> */}
+                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">B1</span><span class="text-sm text-blueGray-400">Level</span>
                         </div>
                     </div>
                     </div>
                 </div>
                 <div class="text-center mt-12">
                     <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                    {user.pseudo}
+                    {profilUser.pseudo}
                     </h3>
                         <span>Pour quoi je suis ici...</span>
-                        <div onClick={()=> ""} class="mb-2 text-blueGray-600 mt-10">
+                        <div  class="mb-2 text-blueGray-600 mt-10">
                             <i class="fas fa-pencil mr-2 text-lg text-blueGray-400"></i>motify
                         </div>
                         <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
-                            {user.bio} 
+                            {profilUser.bio} 
                         </p>
-                        {bioUpdate ? <BioUpdateForm/> : null}
 
                     {/* <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                     <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
@@ -90,7 +105,7 @@ const Profil = () => {
                     <div class="flex flex-wrap justify-center">
                     <div class="w-full lg:w-9/12 px-4">
                         <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
-                        {/* {user.bio} koiiulklk */}
+                        {/* {profilUser.bio} koiiulklk */}
                         </p>
                         <a href="#pablo" class="font-normal text-baseColor">Show more</a>
                     </div>

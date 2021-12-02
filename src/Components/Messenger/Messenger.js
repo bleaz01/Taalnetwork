@@ -22,27 +22,16 @@ const Messenger = () => {
 
   const currentDiscution = useSelector(state => state.messenger)
   const [userToRes, setUserToRes] = useState("")
-  const [lastMsg, setLastMsg] = useState("")
   const [lastTimestamp, setlastTimestamp]=useState('')
   const scrollRef = useRef()
   
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, setFocus, formState: { errors } } = useForm();
 
   const pusher = new Pusher('446a9c83560cab0e7f8d', {
     cluster: 'eu'
   });
 
-  const getMessages = async()=>{
-    try{
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}api/messagerie/message/${currentDiscution._id}`)
-      setMessages(res.data)
-    }catch(error){
-      console.log(error)
-    }
-  }
-
-
-console.log(currentDiscution, "msg ui")
+ 
   const getListRooms = ()=>{
       axios({
           method:'get',
@@ -54,10 +43,19 @@ console.log(currentDiscution, "msg ui")
    
   }
 
+  const getMessage = ()=>(
+    axios({
+      method:'get',
+      url:`${process.env.REACT_APP_API_URL}api/messagerie/message/${currentDiscution._id}`,
+    }).then((res)=> setMessages(res.data)).then((err)=>{
+      console.log(err)
+    })
+  )
+
 
  console.log(messages,'list')
   
-  const onSubmit = data => {
+const onSubmit = data => {
 
     // console.log(currentDiscution[0]._id,'send')
     axios.post(`${process.env.REACT_APP_API_URL}api/messagerie/new/message`,
@@ -67,7 +65,9 @@ console.log(currentDiscution, "msg ui")
       senderImg: user.picture,
       text: data.message,
    })
-  }
+}
+
+
 console.log(user)
 
   useEffect(() => {
@@ -75,12 +75,12 @@ console.log(user)
     
   }, [user._id])
 
-  useEffect(() => {
-   getMessages()
-    
-  }, [currentDiscution])
-
   
+
+  useEffect(() => {
+    getMessage()
+   }, [currentDiscution])  
+
   useEffect(() => {
     pusher.unsubscribe('messages')
 
@@ -94,14 +94,13 @@ console.log(user)
        channel.unsubscribe()
      }
   
-  },[messages])
+  },[setFocus])
 
   useEffect(() => {
    scrollRef.current?.scrollIntoView({behavior:"smooth"})
   }, [messages])
 
  
-  console.log(currentDiscution,'img')
 
     return (
         <div class="flex flex-row h-screen antialiased text-gray-800">
@@ -116,7 +115,6 @@ console.log(user)
                    currentDiscution ? messages.map((msg) =>(
                       <div className={'flex flex-col'} ref={scrollRef}>
                         <Message key={msg._id} msg={msg} user= {user}/> 
-                        <small>{dataeParser(msg.createdAt)}</small>  
                       </div>
                     )) : <img className='w-2/3 align-middle' src={imgBg}/>
                   }   

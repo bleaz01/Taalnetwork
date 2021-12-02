@@ -3,7 +3,8 @@ import {
    LIKE_POST,
    UNLIKE_POST,
    GET_POSTS,
-   MODIFY_POST
+   MODIFY_POST,
+   CREATE_COMMENT
 } from './actionTypes'
 
 

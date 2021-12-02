@@ -1,5 +1,9 @@
 import {app} from '../../firebase'
+import moment from 'moment';
 
+export const formatDate = (timestamp) => {
+	return moment(timestamp).format("h:mm A");
+};
 export const dataeParser = (num)=>{
     let option = {hour:"2-digit", minute:"2-digit", second:"2-digit"
     ,weekday:"long", year:"numeric", month:'short', day:"numeric" }

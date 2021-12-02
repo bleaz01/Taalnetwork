@@ -4,12 +4,13 @@ import { UserContext } from '../../../lib/context';
 import { handleUploade } from '../function';
 import base64 from "base-64"
 import axios from 'axios';
+import { uploadPicture } from '../../../lib/redux/actions/user';
 
 
 const CreatePostForm = () => {
 
   const [file, setFile] = useState(null)
-  const { register, handleSubmit, } = useForm();
+  const { register, handleSubmit,  } = useForm();
   const {user} = useContext(UserContext)
 
   const [fileInputState, setFileInputState] = useState('');
@@ -21,10 +22,8 @@ const CreatePostForm = () => {
 
  
 
-  const previewFile = (e) => {
-      
+  const handleChange = (e) => {
     setPreviewSource(URL.createObjectURL(e.target.files[0]));
-      
   };
 
   const handleVideo = async (link, msg) => {
@@ -41,14 +40,15 @@ const CreatePostForm = () => {
         const post = {
           message:msg,
           video:embed.split("&")[0],
-          posterID:user._id,
+          author:user._id,
           posterImg:user.picture
 
         }
         console.log(post)
         try {
          await axios.post(`${process.env.REACT_APP_API_URL}api/post`,{post})
-           console.log("ssssssssss")
+         window.location.reload()
+
           // setFileInputState('');
           // setPreviewSource('');
             // setSuccessMsg('Image uploaded successfully');
@@ -59,42 +59,44 @@ const CreatePostForm = () => {
       }
     }
   };
-  const uploadImage = async (base64EncodedImage,msg) => {
+  const uploadImage = (base64EncodedImage,msg) => {
    
     const post = {
       message:msg,
       file:base64EncodedImage,
-      posterID:user._id,
+      author:user._id,
       posterImg:user.picture
     }
-    console.log(post)
-      try {
-          await axios.post(`${process.env.REACT_APP_API_URL}api/post`,{
+    console.log(post,"poste")
+       axios.post(`${process.env.REACT_APP_API_URL}api/post`,{
             post
+          }).then((res)=>{
+            setSuccessMsg('Image uploaded successfully');
+            window.location.reload()
+
+          }).catch((err)=>{
+            setErrMsg('Something went wrong!');
           })
-          setFileInputState('');
-          setPreviewSource('');
-          setSuccessMsg('Image uploaded successfully');
-      } catch (err) {
-          console.error(err);
-          setErrMsg('Something went wrong!');
-      }
+            
   };
 
   const onSubmit = data => {
 
+    console.log('send')
     if(data.video){
       handleVideo(data.video,data.message)
       return console.log("viedo poster")
     }
     const post = {
       message:data.message,
-      posterID:user._id,
+      author:user._id,
       posterImg:user.picture
 
     }
-    if (data.file[0]){
-      console.log(data.file[0], "yoo")
+    console.log(data, "yoo")
+
+    if (previewSource[0]){
+      uploadImage(previewSource,data.message)
     }else{
        try {
           axios.post(`${process.env.REACT_APP_API_URL}api/post`,{
@@ -102,13 +104,12 @@ const CreatePostForm = () => {
           })
           setFileInputState('');
           setPreviewSource('');
-          setSuccessMsg('Image uploaded successfully');
       } catch (err) {
           console.error(err);
           setErrMsg('Something went wrong!');
       }
     }
-    // history.push('/home')
+    window.location.reload()
    
   }
 
@@ -135,7 +136,7 @@ const CreatePostForm = () => {
                                 <div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">                      
                                     <img class="has-mask h-full w-full object-center" src={previewSource ? previewSource :"https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"} alt="freepik image"/>
                                 </div>
-                                <input {...register('file')} type="file" class="hidden" onChange={(e) => previewFile(e)}/>
+                                <input  name="file" type="file" class="hidden" onChange={handleChange}/>
                             </label>
                         </div>
                       </div>

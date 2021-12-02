@@ -7,9 +7,7 @@ const initialState = {
 }
 
 const messenger = (state = initialState, {type, payload})=>{
-    console.log(payload,'pel')
-    console.log('jea')
-
+  
     switch(type){
         case CURRENT_CONVER:
             return state.discution = payload

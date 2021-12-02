@@ -1,20 +1,23 @@
 import React, { Suspense, lazy} from "react";
+import { CookiesProvider } from "react-cookie";
 import './App.css';
 import Routes from './Components/utils/Routes';
-// import { useDispatch, useSelector } from "react-redux";
-// import { RequestAPIAuth } from "./lib/axios";
-
-// import { CurrentUSerContext } from "./Components/Routes/AppContext";
-// import { getUser } from "./lib/redux/actions/user";
+import LocaleContextProvider from "./Components/utils/Wrappers/LocalContext";
 import UserContextProvider from "./lib/context";
 
 const App =()=> {
 
   
   return (
-    <UserContextProvider>
-      <Routes></Routes>
-    </UserContextProvider>
+    <LocaleContextProvider>
+      <CookiesProvider>
+        <UserContextProvider>
+          <Routes></Routes>
+        </UserContextProvider>
+      </CookiesProvider>
+    </LocaleContextProvider>
+      
+   
   );
 }
 

@@ -21,11 +21,14 @@ import CardPricing from '../Payement/CardPricing';
 import { useDispatch, useSelector } from "react-redux";
 import {useLazyQuery, useMutation, useQuery} from '@apollo/client'
 import { CurrentUSerContext } from '../Routes/AppContext';
+import LivePage from '../Live/LivePage';
+import Profil from '../Profil/Profil';
+import LiveRoom from '../Live/LiveRoom';
+
 
 const Routes = () => {
     const [loggedIn, setloggedIn] = useState(true)
     const uId = useContext(CurrentUSerContext)
-    const user = useSelector(state => state.user);
 
    
     // useEffect(() => {
@@ -59,8 +62,14 @@ const Routes = () => {
            <Route path='/conjugation'>
                <Conjugation/>
            </Route>
-           <Route path='/live'>
+           <Route exact path='/live'>
                <Live/>
+           </Route>
+           <Route exact path='/live/joint-room'>
+               <LivePage/>
+           </Route>
+           <Route exact path='/room'>
+               <LiveRoom/>
            </Route>
            <Route exact path='/exercices&test'>
                <Exercices/>
@@ -71,6 +80,9 @@ const Routes = () => {
            <Route path="/register">
                 <Register/>
            </Route>
+           <Route path='/profil/:id'>
+                <Profil/>
+            </Route>
            <Route path="/vocabulary">
                 <Vocabulary/>
            </Route>

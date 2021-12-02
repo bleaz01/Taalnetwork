@@ -2,16 +2,16 @@ import React,{useState} from 'react'
 
 const CardComment = ({comment}) => {
     const [openComment, setopenComment] = useState(false)
-
+  console.log(comment.author,"comment");
     return (
         <div>
                    
                     <div className="flex-shrink-0 mb-3 mr-3">
-                      <img className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src={comment?.commenterUserImg} alt=""/>
+                      <img className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src={comment.author?.picture} alt=""/>
                     </div>
 
                     <div onClick={()=>setopenComment(!openComment)} className="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-                      <strong>Sarah</strong> <span className="text-xs text-gray-400">3:34 PM</span>
+                      <strong>{comment.author?.pseudo}</strong> <span className="text-xs text-gray-400">3:34 PM</span>
                       <p className="text-sm">
                        {comment?.text}
                        </p>

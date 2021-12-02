@@ -1,67 +1,69 @@
-import { io } from "socket.io-client";
-export const socket = io("https://taalnetworkserver.herokuapp.com/", {transports: ['websocket', 'polling', 'flashsocket']})
+import configStore from '../redux/store'
+import io from 'socket.io-client'
+import { getRoomId, saveIndentity, setParticipants } from '../redux/actions/meet'
+import { store } from '../..'
+import * as webRTCHandler from '../../lib/webRTCHandler';
+export const socket = io("http://localhost:5002", {transports: ['websocket', 'polling', 'flashsocket']})
+export const connectWithSocketIoServer = async ()=>{
 
-// Variables globales
-let username,
-    allUsers,
-    inputUsername
+    // const SERVER = 'http://localhost:8500/'
+    // var socket = io({transports: ['websocket'], upgrade: false,host:});
 
-// Envoie de l'username souhaité
-export const handleUsername =(_usernameWanted)=>{
-    let usernameWanted  = _usernameWanted
-    socket.emit('setUsername', usernameWanted)
-  
+    // let socket = io(SERVER,{reconnect: true})
+
+    socket.on('connect',()=>{
+        console.log('successfully socket io server')
+        console.log(socket.id,'id')
+
+        
+    });
+    socket.on('room-id',(data)=>{
+        const {roomId}= data
+        store.dispatch(getRoomId(roomId))
+    });
+
+    socket.on('room-user', (data) =>{
+        const{connectedUsers}= data
+        store.dispatch(setParticipants(connectedUsers))
+    });
+    socket.on('conn-prepare', data =>{
+        const {connUserSocketId}= data
+        webRTCHandler.prepareNewPeerConnection(connUserSocketId)
+
+        socket.emit('conn-init',{connUserSocketId: connUserSocketId})
+    })
+
+    socket.on('conn-signal', (data) =>{
+        webRTCHandler.handleSignalingData(data)
+    })
+
+    socket.on('conn-init', (data)=>{
+        const {connUserSocketId} = data
+
+        webRTCHandler.prepareNewPeerConnection(connUserSocketId, true)
+    })
+    
 }
 
-// Envoie d'un message & Traitement écriture
-let isWriting = false,
-    stopWriting
 
-export const sendMessage = (_text) => {
-    let text = _text.trim()
-    if (text != '') {
-        // Envoie du message
-        socket.emit('sendMessage', text)
-        // Traitement pour l'écriture
-        clearTimeout(stopWriting)
-        isWriting = false
-        console.log('Stop writing')
-        socket.emit('stopWriting')
+export const createNewRoom = (identity)=>{
+    
+    const data ={
+        identity
     }
+
+    socket.emit('create-new-room', (data))
 }
 
-// Réponses concernant l'assignation de l'username
-socket.on('acceptUsername', (_username, _allUsers) => {
-    username = _username
-    allUsers = _allUsers
+export const joinRoom= (identity, roomId)=>{
+    const data ={
+        roomId,
+        identity
+    }
 
-    console.log(_username,_allUsers, 'accept')
-//    updateUsers(allUsers)
+    socket.emit('join-room', data)
+}
 
-})
-socket.on('rejectUsername', (_username) => {
-  
-    inputUsername = _username
-    console.log(inputUsername,'reject')
-    return inputUsername
-})
-
-// Mise à jour des utilisateurs 
-socket.on('newUser', (newUsername, newSocketId,_allUsers) => {
-    allUsers = _allUsers
-    // updateUsers(allUsers)
-    // messageNewUser(newUsername)
-    console.log(newSocketId,'jil', newUsername)
-})
-socket.on('leftUser', (_allUsers) => {
-    allUsers = _allUsers
-    // updateUsers(allUsers)
-})
-
-
-
-socket.on('newMessage', (text, usernameSender) => {
-    // showNewMessage(text, usernameSender)
-    console.log(text,usernameSender,'newMessage')
-})
-  
+export const signalPeerData = (data)=>{
+    socket.emit('conn-signal', data)
+}

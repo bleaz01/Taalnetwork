@@ -9,15 +9,8 @@ import FriendsList from './FriendsList'
 
 const SideBar = (listRooms) => {
   const [openCreategroup, setopenCreategroup] = useState(false)
- const [nameGroup, setNameGroup] = useState()
- const {user} = useContext(UserContext)
-console.log(user,"amis")
-  // useEffect(() => {
-  //   const channel = pusher.subscribe('rooms');
-  //   channel.bind('newRoom', function (data){
-  //     createNewRoom ()
-  //   })
-  // }, [])
+
+ 
     return (
         <div class="bg-secondeColor flex flex-row w-96 flex-shrink-0 bg-gray-100 p-4">
         <div onClick={() => console.log("creer new chat")} class="cursor-pointer flex flex-col items-center py-4 flex-shrink-0 w-20 bg-baseColor rounded-l-2xl">
@@ -126,18 +119,11 @@ console.log(user,"amis")
            <div class="mt-5">
               <div class="text-xs text-gray-400 font-semibold uppercase">Followers</div>
           </div>
-          <div>
-            <form>
-              <input className="w-full my-3 pl-2" placeholder="Name group" type="text" defaultValue={(e) => setNameGroup(e.prevant.default)}/>
-            </form>
-          </div>
+          
           {
-          user?.following.map(user =>{
-            
-              return (
-                <FriendsList user={user}/>
-              )
-            })}
+      
+                <FriendsList/>
+            }
           </>
           :
           <>

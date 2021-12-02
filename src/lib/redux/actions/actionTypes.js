@@ -14,3 +14,19 @@ export const LIKE_POST="LIKE_POST"
 export const UNLIKE_POST="UNLIKE_POST"
 export const GET_POSTS="GET_POSTS"
 export const MODIFY_POST="MODIFY_POST"
+export const CREATE_COMMENT="CREATE_COMMENT"
+
+
+export const IS_ROOM_HOST= "IS_ROOM_HOST"
+export const CONNECT_ONLY_AUDIO= "CONNECT_ONLY_AUDIO"
+export const GET_ROOM_ID= "GET_ROOM_ID"
+export const SAVE_INDENTITY= "SAVE_INDENTITY"
+export const SHOW_OVERLAY= "SHOW_OVERLAY"
+export const SET_PARTICIPANTS = "SET_PARTICIPANTS"
+
+
+
+
+
+
+

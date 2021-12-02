@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { NoSchemaIntrospectionCustomRule } from 'graphql';
 import React,{useState} from 'react'
 import FileBase64 from 'react-file-base64'
 import { useForm } from "react-hook-form";
@@ -8,21 +9,23 @@ const UploadImgAcount = (user) => {
 
     const { register, handleSubmit, watch, errors } = useForm();
     const [previewSource, setPreviewSource] = useState('');
-
+const [picture, setPicture] = useState("")
     const dispatch = useDispatch()
 
     const previewFile = (e) => {
       
         setPreviewSource(URL.createObjectURL(e.target.files[0]));
-          
+          setPicture(e.target.files[0])
       };
-    const onSubmit =(data)=>{
-        console.log(data)
-        if (data.img[0]){
+    const onSubmit =()=>{
+        console.log('myPicturejjjlklklklklklklk')
+
+        console.log(picture,'myPicture')
+        if (picture){
             const reader = new FileReader();
-            reader.readAsDataURL(data.img[0]);
+            reader.readAsDataURL(picture);
             reader.onloadend = () => {
-                uploadImage(reader.result, data.message);
+                uploadImage(reader.result);
             };
             reader.onerror = () => {
                 console.error('AHHHHHHHH!!');
@@ -32,6 +35,7 @@ const UploadImgAcount = (user) => {
     }
     const uploadImage = async (base64EncodedImage) => {
         console.log("salut je t'envoi ")
+        console.log(user,'envoi')
         dispatch(uploadPicture(base64EncodedImage,user.user))
         window.location.reload()
      };

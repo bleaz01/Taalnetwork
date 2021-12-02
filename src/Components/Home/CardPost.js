@@ -5,8 +5,9 @@ import axios from 'axios'
 import { UserContext } from '../../lib/context'
 import { useDispatch } from 'react-redux'
 import { correctionPost, likePost, unlikePost } from '../../lib/redux/actions/post'
+import { formatDate } from '../utils/function'
+import { useHistory } from 'react-router'
 // import { fas } from 'fontawesome.macro'
-
 const CardPost = ({image, post}) => {
     const [openFeed, setopenFeed] = useState(false)
     const [openComment, setopenComment] = useState(false)
@@ -16,17 +17,15 @@ const CardPost = ({image, post}) => {
     const {user} = useContext(UserContext)
     const dispatch =  useDispatch()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
+    const history = useHistory()
    
 
-
+  console.log(user,'kkk')
     const onSubmit = (data)=>{
       console.log(data)
 
       axios.patch(`${process.env.REACT_APP_API_URL}api/post/comment-post/${post._id}`,{
-        commenterId:user._id,
-        commenterPseudo:user.pseudo,
-        commenterUserImg:user.picture,
+        author:user._id,
         text:data.text
 
       })
@@ -56,6 +55,7 @@ const CardPost = ({image, post}) => {
     //   }
    
     // }, [user._id, liked, post?.likers])
+    console.log(post?.author._id,"kkkk")
 
     return (
           <div className="grid grid-cols-1 gap-6 my-6 px-4 md:px-6 lg:px-8">
@@ -65,13 +65,13 @@ const CardPost = ({image, post}) => {
               >
               <div className="py-2 flex flex-row items-center justify-between">
                 <div className="flex flex-row items-center">
-                  <a href="#" className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
-                    <img className="rounded-full h-8 w-8 object-cover" src={post?.posterImg} alt=""/>
-                    <p className="ml-2 text-base font-medium">Jon Doe</p>
-                  </a>
+                  <div onClick={() => history.push(`/profil/${post?.author._id}`)} className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
+                    <img className="rounded-full h-8 w-8 object-cover" src={post?.author.picture} alt=""/>
+                    <p className="ml-2 text-base font-medium">{post?.author.pseudo}</p>
+                  </div>
                 </div>
                 <div className="flex flex-row items-center">
-                  <p className="text-xs font-semibold text-gray-500">{post?.createdAt}</p>
+                  <p className="text-xs font-semibold text-gray-500">{formatDate(post?.createdAt)}</p>
                 </div>
               </div>
               <div className="mt-2">
