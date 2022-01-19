@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faCommentAlt, faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { disconnect } from '../../../lib/socket-io';
+import { useSelector } from 'react-redux';
 
 const LiveHeader = ({ roomId }) => {
 	const [ isMessenger, setIsMessenger ] = useState(false);
 	const [ messageAlert, setMessageAlert ] = useState({});
-
+	const userDisconected = useSelector((state) => state.meet.participants)
 	let interval = null;
 
-	console.log(roomId);
+	console.log(userDisconected);
 	const roomDisconnection = () => {
+
+		disconnect(userDisconected)
 		const siteUrl = (window.location = '/live');
 		window.location.href = siteUrl;
 	};

@@ -4,7 +4,8 @@ import {
     GET_ROOM_ID,
     SAVE_INDENTITY,
     SHOW_OVERLAY,
-    SET_PARTICIPANTS
+    SET_PARTICIPANTS,
+    SET_MESSAGES
 } from  "../actions/actionTypes"
 
 const initialState ={
@@ -13,7 +14,8 @@ const initialState ={
     connectOnlyWhithAudio:false,
     roomId:null,
     showOverlay:true,
-    participants:[]
+    participants:[],
+    messages:[]
 }
 
 const meet = (state = initialState, {type, payload})=>{
@@ -21,7 +23,6 @@ const meet = (state = initialState, {type, payload})=>{
 
     switch(type){
         case IS_ROOM_HOST:
-            console.log(payload,'payload room host')
 
             return {
                 ...state,
@@ -34,7 +35,6 @@ const meet = (state = initialState, {type, payload})=>{
                 connectOnlyWhithAudio:payload
             }
         case GET_ROOM_ID:
-            console.log(payload,'payload roomId')
 
             return {
                 ...state,
@@ -42,24 +42,25 @@ const meet = (state = initialState, {type, payload})=>{
             }
 
         case SAVE_INDENTITY:
-            console.log(payload,'payload indentity')
-
             return{
                 ...state,
                 identity:payload
             }
         case SHOW_OVERLAY:
-            console.log(payload,'payload overlay')
 
             return{
                 ...state,
                 showOverlay:payload
             }
         case SET_PARTICIPANTS:
-            console.log(payload,'payload overlay')
             return{
                 ...state,
                 participants: payload
+            }
+        case SET_MESSAGES:
+            return{
+                ...state,
+                messages: payload
             }
         default: 
             return state

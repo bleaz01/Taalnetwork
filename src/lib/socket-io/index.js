@@ -28,7 +28,7 @@ export const connectWithSocketIoServer = async ()=>{
     });
     socket.on('conn-prepare', data =>{
         const {connUserSocketId}= data
-        webRTCHandler.prepareNewPeerConnection(connUserSocketId)
+        webRTCHandler.prepareNewPeerConnection(connUserSocketId, false)
 
         socket.emit('conn-init',{connUserSocketId: connUserSocketId})
     })
@@ -62,6 +62,10 @@ export const joinRoom= (identity, roomId)=>{
     }
 
     socket.emit('join-room', data)
+}
+
+export const disconnect =(data)=>{
+    socket.emit('user-disconnect', data)
 }
 
 export const signalPeerData = (data)=>{

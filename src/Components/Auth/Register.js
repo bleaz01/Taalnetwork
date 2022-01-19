@@ -10,6 +10,8 @@ import axios from 'axios';
 const Register = () => {
 
     const dispatch = useDispatch();
+    const [updateRegister, setupdateRegister] = useState(false)
+    const [userId, setUserId] = useState('')
     const { register, handleSubmit, watch, errors } = useForm();
     const [user, setuser] = useState("")
     const history = useHistory()
@@ -30,7 +32,8 @@ const Register = () => {
             if(res.data?.error) {
                     console.log(res.data?.error)
                 }else{
-                    history.push('/login')
+                    setUserId(res.data?.user)
+                    setupdateRegister(true)
                 }
           }).catch((err)=>{
               console.log(err)
@@ -42,9 +45,13 @@ const Register = () => {
         //   console.log("successsfuly");
         // });
     };
-
+    console.log(userId,'id')
     return (
         <div className="bg-secondeColor ">
+            {
+                !updateRegister 
+                ? 
+                <>
             <div class="container  min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5 mx-auto">
             <div class="bg-baseTextColor text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" >
                 <div class="md:flex w-full">
@@ -115,6 +122,13 @@ const Register = () => {
                 </div>
             </div>
         </div>
+                </>
+                :
+                <>
+                <UpdateRegister id={userId}/>
+                </>
+            }
+
         </div>
        
         

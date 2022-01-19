@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import imgBg from '../assets/Dialogue.png'
 import Message from './Message'
 import { UserContext } from '../../lib/context'
-import { dataeParser } from '../utils/function'
+// import { dataeParser } from '../utils/function'
 
 
 
@@ -21,8 +21,8 @@ const Messenger = () => {
   const {user} = useContext(UserContext)
 
   const currentDiscution = useSelector(state => state.messenger)
-  const [userToRes, setUserToRes] = useState("")
-  const [lastTimestamp, setlastTimestamp]=useState('')
+  // const [userToRes, setUserToRes] = useState("")
+  // const [lastTimestamp, setlastTimestamp]=useState('')
   const scrollRef = useRef()
   
   const { register, handleSubmit, watch, setFocus, formState: { errors } } = useForm();

@@ -3,7 +3,8 @@ import {
     LOGIN,
     LOGOUT,
     UPLOAD_BIO,
-    UPLOAD_PICTURE
+    UPLOAD_PICTURE,
+    UPLOAD_USER
 } from  "../actions/actionTypes"
 
 const initialState = {
@@ -36,6 +37,12 @@ const user = (state = initialState, {type, payload})=>{
                 ...state.user,
                 bio:payload
             }
+            case UPLOAD_USER:
+                console.log(payload)
+                return {
+                    ...state.user,
+                    ...payload
+                }
         default: 
             return state
     }

@@ -37,18 +37,23 @@ const LiveRoom = () => {
             !showOverlay 
             ?
             (
-                <div className="flex w-screen h-screen">
-                <div className="flex flex-col min-w-3/4 ">
-                    <LiveHeader roomId={roomId}/>
-                        <div className="">
-                            <VideoPlayer/>
-                           
-                        </div>
-                        <div className="mt-auto">
-                              <LiveFooter/>
-                        </div>
+            <div className="flex w-screen h-screen">
+                <div className="flex flex-col h-screen w-3/4">
+                    <div className=''>
+                        <LiveHeader roomId={roomId}/>
+                    </div>
+                    <div id='live-video' className="flex bg-redColor flex-wrap border-greenColor">
+                        {/* <div id='live-video'></div>
+                        <div id='live-video'></div>
+                        <div id='live-video'></div> */}
+                    </div>
+                    <div className="mt-auto">
+                        <LiveFooter/>
+                    </div>
                 </div>
-                <LiveMessenger/>
+                <div className="w-1/4">
+                    <LiveMessenger/>
+                </div>
             </div>
              )
             :

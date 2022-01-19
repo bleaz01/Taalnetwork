@@ -24,6 +24,7 @@ import { CurrentUSerContext } from '../Routes/AppContext';
 import LivePage from '../Live/LivePage';
 import Profil from '../Profil/Profil';
 import LiveRoom from '../Live/LiveRoom';
+import UpdateRegister from '../Auth/UpdateRegister';
 
 
 const Routes = () => {
@@ -79,6 +80,7 @@ const Routes = () => {
            </Route>
            <Route path="/register">
                 <Register/>
+                {/* <UpdateRegister/> */}
            </Route>
            <Route path='/profil/:id'>
                 <Profil/>

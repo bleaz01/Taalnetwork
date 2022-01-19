@@ -26,6 +26,7 @@ const Profil = () => {
             console.log(res)
         })
     }, [url])
+    
     console.log(profilUser,'userProfil')
     return (
         <div>

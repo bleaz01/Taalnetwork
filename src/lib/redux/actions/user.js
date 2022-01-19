@@ -2,7 +2,8 @@ import axios from 'axios'
 import {
     CURRENT_USER,
     UPLOAD_BIO,
-    UPLOAD_PICTURE
+    UPLOAD_PICTURE,
+    UPLOAD_USER
 } from './actionTypes'
 
 export const getUser =(uId)=>{
@@ -51,6 +52,29 @@ export const uploadBio = (data,id)=>{
               .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
               .then((res)=>{
                 dispach({type:UPLOAD_BIO, payload: res.data.bio})
+              })
+          }).catch((err)=>{
+              console.log(err)
+          })
+    }
+    
+} 
+
+export const uploadUser = (data,id)=>{
+    console.log('jjj', data)
+    return(dispach) =>{
+        axios({
+            method:'put',
+            url:`${process.env.REACT_APP_API_URL}api/user/${id}`,
+                data:{
+                    ...data
+                }
+            
+          }).then((res)=>{
+              return axios
+              .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
+              .then((res)=>{
+                dispach({type:UPLOAD_USER, payload: res.data})
               })
           }).catch((err)=>{
               console.log(err)

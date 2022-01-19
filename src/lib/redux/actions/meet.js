@@ -4,7 +4,8 @@ import {
     GET_ROOM_ID,
     SAVE_INDENTITY,
     SHOW_OVERLAY,
-    SET_PARTICIPANTS
+    SET_PARTICIPANTS,
+    SET_MESSAGES,
 } from './actionTypes'
 
 export const getIsRoomHost = (isRoomHost)=>{
@@ -49,5 +50,13 @@ export const setParticipants = (participants)=>{
     return{
         type:SET_PARTICIPANTS,
         payload:participants
+    }
+}
+
+export const setMessages = (messages)=>{
+    console.log(messages,'payload')
+    return{
+        type:SET_MESSAGES,
+        payload:messages
     }
 }
