@@ -29,6 +29,10 @@ module.exports = {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      regular: ['ComicNeue', 'regular'],
+      bold:['ComicNeue', 'bold'],
+      italic: ['ComicNeue', 'italic']
+
     },
     extend: {},
   },

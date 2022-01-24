@@ -37,7 +37,7 @@ const Login = () => {
                     setEmailError(res.data?.error.email)
                     setPasswordError(res.data?.error.password)
                 }else{
-                    history.push('/home')
+                    window.location = "/home"
                 }
           })
         

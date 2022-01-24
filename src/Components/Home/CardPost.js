@@ -67,7 +67,7 @@ const CardPost = ({image, post}) => {
                 <div className="flex flex-row items-center">
                   <div onClick={() => history.push(`/profil/${post?.author._id}`)} className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
                     <img className="rounded-full h-8 w-8 object-cover" src={post?.author.picture} alt=""/>
-                    <p className="ml-2 text-base font-medium">{post?.author.pseudo}</p>
+                    <p className="font-regular ml-2 text-base font-medium">{post?.author.pseudo}</p>
                   </div>
                 </div>
                 <div className="flex flex-row items-center">
@@ -76,7 +76,7 @@ const CardPost = ({image, post}) => {
               </div>
               <div className="mt-2">
               <div className="py-2">
-                {modify === false  && <p className="leading-snug">{post?.message}</p> }
+                {modify === false  && <p className=" font-regular leading-snug">{post?.message}</p> }
                 {
                   modify
                   &&
@@ -91,7 +91,7 @@ const CardPost = ({image, post}) => {
                   </div>
 
                 }
-                <small onClick={() =>setModify(!modify)} className="">correction</small>
+                <small onClick={() =>setModify(!modify)} className="font-bold">correction</small>
               </div>
               { post?.file !== undefined
                 ? (

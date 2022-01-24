@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import imgBg from '../assets/Dialogue.png'
 import Message from './Message'
 import { UserContext } from '../../lib/context'
+import bgImg from '../assets/workteam.png'
 // import { dataeParser } from '../utils/function'
 
 
@@ -17,7 +18,8 @@ import { UserContext } from '../../lib/context'
 
 const Messenger = () => {
   const [messages, setMessages] = useState([])
-  const [listRooms, setListRooms] = useState([])    
+  const [listRooms, setListRooms] = useState([]) 
+  const [screenMessage, setscreenMessage] = useState(false);   
   const {user} = useContext(UserContext)
 
   const currentDiscution = useSelector(state => state.messenger)
@@ -105,6 +107,10 @@ console.log(user)
     return (
         <div class="flex flex-row h-screen antialiased text-gray-800">
           <SideBar listRooms={listRooms}/>
+          {
+            screenMessage 
+            ?
+          
             <div class="bg-secondeColor flex flex-col h-full w-full bg-white space-y-6 px-4 py-6">
             <Header user={currentDiscution.conversationImg}/>
               <div class="bg-greyColor h-full overflow-hidden py-4 rounded-2xl">
@@ -185,7 +191,19 @@ console.log(user)
                 
               </div>
             </div>
-          </div>
+          
+            :
+            <div className="bg-secondeColor w-full p-4">
+              <div className="bg-whiteColor h-full w-full rounded-xl flex justify-center aligne-center">
+                <div>
+                <p className="font-regular text-center">Choisie Amie ou une groupe avec qui discuter</p>
+                  <img className ="w-2/3 h-3/4"  src={bgImg}/>
+                </div>
+                  
+              </div>
+            </div>
+          }
+         </div>
     )
     
 }
