@@ -29,6 +29,8 @@ const UpdateRegister = ({ id }) => {
 			<div className="flex flex-col border-2 bg-whiteColor rounded-2xl">
 				<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-between">
 					<div className="flex flex-col p-5">
+						<div className="flex justify-between w-full ">
+
 						<select
 							{...register('motherLangage')}
 							className="w-1/2 pl-3 pr-3 py-3 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
@@ -38,6 +40,15 @@ const UpdateRegister = ({ id }) => {
 							<option value="fr">Français</option>
 							<option value="Nl">Néerlandais</option>
 						</select>
+						
+						<select
+							{...register('mentor')}
+							className="w-1/2 pl-3 pr-3 py-3 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+						>
+							<option value="true">Teacher</option>
+							<option value="false">Learner</option>
+						</select>
+						</div>
 						<div>
 							<h2 className="py-4">Choisir la langue que je veu apprendre </h2>
 							<div className="flex justify-between w-full ">
@@ -51,16 +62,16 @@ const UpdateRegister = ({ id }) => {
 									<option value="nl">Néerlandais</option>
 								</select>
 								<select
-									{...register('level learning')}
+									{...register('rank')}
 									className="w-1/3 pl-3 pr-3 py-3 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
 								>
 									<option value="">Niveau</option>
-									<option value="a1">A1</option>
-									<option value="a2">A2</option>
-									<option value="b1">B1</option>
-									<option value="b2">B2</option>
-									<option value="c1">C1</option>
-									<option value="c2">C2</option>
+									<option value="A1">A1</option>
+									<option value="A2">A2</option>
+									<option value="B1">B1</option>
+									<option value="B2">B2</option>
+									<option value="C1">C1</option>
+									<option value="C2">C2</option>
 								</select>
 							</div>
 							<div>
@@ -165,7 +176,7 @@ const UpdateRegister = ({ id }) => {
 											#Politique
 										</span>
 										<span
-											onClick={() => handleFocusTags('voyage')}
+											onClick={() => handleFocusTags('travel')}
 											className="m-1 bg-greyColor hover:bg-baseColor rounded-full px-2 font-bold text-sm leading-loose cursor-pointer"
 										>
 											#Voyage

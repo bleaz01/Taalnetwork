@@ -7,9 +7,8 @@ const SideBar = (props) => {
     const location = useLocation()
 
     return (
-                <div className="flex flex-no-wrap h-screen">
+                <div className="flex flex-no-wrap h-screen ">
                     {/* Sidebar starts */}
-                    {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
                     <div className="w-64 absolute sm:relative bg-baseColor shadow md:h-full flex-col justify-between hidden sm:flex">
                         <div className="px-8">
                             <ul className="mt-12">
@@ -41,14 +40,14 @@ const SideBar = (props) => {
                                     <div className="py-1 px-3 bg-gray-700 rounded text-gray-500 flex items-center justify-center text-xs">8</div>
                                 </li>
                                 <li className="flex w-full justify-between text-baseTextColor hover:text-gray-500 cursor-pointer items-center mb-6">
-                                    <div className="flex items-center">
+                                    <div  onClick={() => history.push('/users')} className="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-compass" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" />
                                             <polyline points="8 16 10 10 16 8 14 14 8 16" />
                                             <circle cx={12} cy={12} r={9} />
                                         </svg>
                                         <span className="text-sm ml-2">
-                                            Amis
+                                            Taalnetworker
                                         </span>
                                     </div>
                                 </li>
@@ -95,10 +94,8 @@ const SideBar = (props) => {
                     </div>
                    
                     {/* Sidebar ends */}
-                    {/* Remove class [ h-64 ] when adding a card block */}
-                    <div className="container  h-auto mx-2 py-2 h-64 md:w-4/5 w-11/12 px-6">
-                        {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
-                        <div className="overflow-y-auto w-full h-full rounded border-dashed border-2 border-gray-300">{
+                    <div className="h-auto mx-2 py-2 h-64 w-10/12 px-6">
+                        <div className="overflow-y-auto w-full h-full border-2 border-gray-300">{
                             props.children
                         }</div>
                     </div>

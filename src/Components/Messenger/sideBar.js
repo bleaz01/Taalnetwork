@@ -10,13 +10,12 @@ import FriendsList from './FriendsList'
 const SideBar = (listRooms) => {
   const [openCreategroup, setopenCreategroup] = useState(false)
 
- 
     return (
-        <div class="bg-secondeColor flex flex-row w-96 flex-shrink-0 bg-gray-100 p-4">
-        <div onClick={() => console.log("creer new chat")} class="cursor-pointer flex flex-col items-center py-4 flex-shrink-0 w-20 bg-baseColor rounded-l-2xl">
+        <div className="bg-secondeColor flex flex-row w-96 flex-shrink-0 bg-gray-100 p-4">
+        <div onClick={() => console.log("creer new chat")} className="cursor-pointer flex flex-col items-center py-4 flex-shrink-0 w-20 bg-baseColor rounded-l-2xl">
           <div href="#"
-             class="flex items-center justify-center h-12 w-12 bg-indigo-100 text-indigo-800 rounded-full">
-            <svg class="w-8 h-8"
+             className="flex items-center justify-center h-12 w-12 bg-indigo-100 text-indigo-800 rounded-full">
+            <svg className="w-8 h-8"
                  fill="none"
                  stroke="currentColor"
                  viewBox="0 0 24 24"
@@ -27,12 +26,12 @@ const SideBar = (listRooms) => {
                     d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
             </svg>
           </div>
-          <ul class="flex flex-col space-y-2 mt-12">
+          <ul className="flex flex-col space-y-2 mt-12">
             <li>
               <a href="/home"
-                 class="flex items-center">
-                <span class="flex items-center justify-center text-indigo-100 hover:bg-indigo-700 h-12 w-12 rounded-2xl">
-                  <svg class="w-6 h-6"
+                 className="flex items-center">
+                <span className="flex items-center justify-center text-indigo-100 hover:bg-indigo-700 h-12 w-12 rounded-2xl">
+                  <svg className="w-6 h-6"
                        fill="none"
                        stroke="currentColor"
                        viewBox="0 0 24 24"
@@ -48,9 +47,9 @@ const SideBar = (listRooms) => {
             
             <li>
               <a href="#"
-                 class="flex items-center">
-                <span class="flex items-center justify-center text-indigo-100 hover:bg-indigo-700 h-12 w-12 rounded-2xl">
-                  <svg class="w-6 h-6"
+                 className="flex items-center">
+                <span className="flex items-center justify-center text-indigo-100 hover:bg-indigo-700 h-12 w-12 rounded-2xl">
+                  <svg className="w-6 h-6"
                        fill="none"
                        stroke="currentColor"
                        viewBox="0 0 24 24"
@@ -68,8 +67,8 @@ const SideBar = (listRooms) => {
               </a>
             </li>
           </ul>
-          <button class="mt-auto flex items-center justify-center hover:text-indigo-100 text-indigo-500 h-10 w-10">
-            <svg class="w-6 h-6"
+          <button className="mt-auto flex items-center justify-center hover:text-indigo-100 text-indigo-500 h-10 w-10">
+            <svg className="w-6 h-6"
                  fill="none"
                  stroke="currentColor"
                  viewBox="0 0 24 24"
@@ -81,15 +80,15 @@ const SideBar = (listRooms) => {
             </svg>
           </button>
         </div>
-        <div class="flex bg-greyColor flex-col w-full h-full pl-4 pr-4 py-4 -mr-4 rounded-r-2xl">
-          <div class="flex flex-row items-center">
-            <div class="flex flex-row items-center">
-              <div class="text-xl font-semibold">Messages</div>
-              <div class="flex items-center justify-center ml-2 text-xs h-5 w-5 text-white bg-red-500 rounded-full font-medium">5</div>
+        <div className="flex bg-greyColor flex-col w-full h-full pl-4 pr-4 py-4 -mr-4 rounded-r-2xl">
+          <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center">
+              <div className="text-xl font-semibold">Messages</div>
+              <div className="flex items-center justify-center ml-2 text-xs h-5 w-5 text-white bg-red-500 rounded-full font-medium">5</div>
             </div>
-            <div class="ml-auto">
-              <button class="flex items-center justify-center h-7 w-7 bg-gray-200 text-gray-500 rounded-full">
-                <svg class="w-4 h-4 stroke-current"
+            <div className="ml-auto">
+              <button className="flex items-center justify-center h-7 w-7 bg-gray-200 text-gray-500 rounded-full">
+                <svg className="w-4 h-4 stroke-current"
                      fill="none"
                      stroke="currentColor"
                      viewBox="0 0 24 24"
@@ -102,11 +101,11 @@ const SideBar = (listRooms) => {
               </button>
             </div>
           </div>
-          <div class="mt-5">
-            <ul class="flex flex-row items-center justify-between">
+          <div className="mt-5">
+            <ul className="flex flex-row items-center justify-between">
               <li>
                 <div onClick={()=> setopenCreategroup(!openCreategroup)}
-                   class=" cursor-pointer flex items-center pb-3 text-xs font-semibold relative text-indigo-800">
+                   className=" cursor-pointer flex items-center pb-3 text-xs font-semibold relative text-indigo-800">
                   new groupe
                 </div>
               </li>
@@ -116,8 +115,8 @@ const SideBar = (listRooms) => {
            ? 
            <>
 
-           <div class="mt-5">
-              <div class="text-xs text-gray-400 font-semibold uppercase">Followers</div>
+           <div className="mt-5">
+              <div className="text-xs text-gray-400 font-semibold uppercase">Followers</div>
           </div>
           
           {
@@ -127,8 +126,8 @@ const SideBar = (listRooms) => {
           </>
           :
           <>
-          <div class="mt-5">
-            <div class="text-xs text-gray-400 font-semibold uppercase">Team</div>
+          <div className="mt-5">
+            <div className="text-xs text-gray-400 font-semibold uppercase">Team</div>
           </div>
           {listRooms?.listRooms.map(room =>{
             return (

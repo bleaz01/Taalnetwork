@@ -25,6 +25,7 @@ import LivePage from '../Live/LivePage';
 import Profil from '../Profil/Profil';
 import LiveRoom from '../Live/LiveRoom';
 import UpdateRegister from '../Auth/UpdateRegister';
+import Taalnetworker from '../Taalnetworker/Taalnetworker';
 
 
 const Routes = () => {
@@ -90,6 +91,9 @@ const Routes = () => {
            </Route>
            <Route exact path="/pratis">
                 <FormExercise/>
+           </Route>
+           <Route path='/users'>
+               <Taalnetworker/>
            </Route>
            <VipRoute path='/dashboard'>
                 <Index/>
