@@ -1,13 +1,16 @@
-import React from 'react'
-import {useHistory, useLocation}from 'react-router-dom'
+import React, { useContext } from 'react'
+import {useHistory, useLocation, }from 'react-router-dom'
+import { UserContext } from '../lib/context'
 
 const SideBar = (props) => {
 
+    const {user} = useContext(UserContext)
     const history = useHistory()
     const location = useLocation()
 
+    console.log(user, "user sidebar")
     return (
-                <div className="flex flex-no-wrap h-screen ">
+                <div className="flex flex-no-wrap h-screen">
                     {/* Sidebar starts */}
                     <div className="w-64 absolute sm:relative bg-baseColor shadow md:h-full flex-col justify-between hidden sm:flex">
                         <div className="px-8">
@@ -51,7 +54,12 @@ const SideBar = (props) => {
                                         </span>
                                     </div>
                                 </li>
-                                <li className="flex w-full justify-between text-baseTextColor hover:text-gray-500 cursor-pointer items-center mb-6">
+                               
+                               
+                               {
+                                user?.mentor 
+                                ? (
+                                    <li className="flex w-full justify-between text-baseTextColor hover:text-gray-500 cursor-pointer items-center mb-6">
                                     <div className="flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" />
@@ -65,7 +73,13 @@ const SideBar = (props) => {
                                         </span>
                                     </div>
                                     <div className="py-1 px-3 bg-gray-700 rounded text-gray-500 flex items-center justify-center text-xs">25</div>
-                                </li>
+                                    </li>
+                                    )
+                                : (
+                                    null
+                                )
+                               }
+                                
                                
                                 <li className="flex w-full justify-between text-baseTextColor hover:text-gray-500 cursor-pointer items-center">
                                     <div className="flex items-center">
@@ -95,7 +109,7 @@ const SideBar = (props) => {
                    
                     {/* Sidebar ends */}
                     <div className="h-auto mx-2 py-2 h-64 w-10/12 px-6">
-                        <div className="overflow-y-auto w-full h-full border-2 border-gray-300">{
+                        <div className="overflow-y-auto w-full h-full">{
                             props.children
                         }</div>
                     </div>

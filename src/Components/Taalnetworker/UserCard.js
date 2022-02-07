@@ -1,22 +1,14 @@
 import React,{useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
-    faFootballBall, 
-    faMusic, 
-    faPaintBrush, 
-    faGamepad,
-    faUtensils,
-    faFilm,
-    faTshirt,
-    faGem,
-    faPlaneDeparture,
+   
     faGraduationCap,
     faChalkboardTeacher,
     faComment,
-    faQuoteRight
     
 
 } from '@fortawesome/free-solid-svg-icons'
+import {useHistory, useLocation, }from 'react-router-dom'
 import UnknownPicture from '../assets/unknown.png'
 
 
@@ -24,8 +16,9 @@ import UnknownPicture from '../assets/unknown.png'
 const UserCard = ({user}) => {
     console.log(user, 'cad')
     const tags = user
+    const history = useHistory()
 
-    const handleCategories = (tags)=> {
+    const handleTags = (tags)=> {
         const icons = {
             "sport": "fas fa-running",
             "musique": "far fa-music",
@@ -38,8 +31,6 @@ const UserCard = ({user}) => {
             "mode":"fas fa-tshirt",
             "politique":"fas fa-balance-scale",
             
-
-
         };
 
         
@@ -57,7 +48,7 @@ const UserCard = ({user}) => {
     }
 
   return(
-  <div className="w-60 bg-white shadow-lg rounded-lg overflow-hidden m-4">
+  <div onClick={() => history.push('/p/' + user._id)} className=" cursor-pointer w-60 bg-white shadow-lg rounded-lg overflow-hidden m-2">
       <div className="relative">
       <img className="w-full h-44 object-cover object-center bg-secondeColor" src={user.picture ? user.picture : UnknownPicture} alt="avatar"/>
       {
@@ -73,7 +64,7 @@ const UserCard = ({user}) => {
                   <p className="w-1/3">Interês: </p>
                   <div className=" w-2/3 flex justify-between my-auto">
                     { user.tag && user.tag.map(tag =>
-                      handleCategories(tag)
+                      handleTags(tag)
 
                     )
                     }

@@ -32,7 +32,7 @@ const Home = () => {
                     <div className=" w-4/6 border-baseColor rounded-lg border-2 hover:bg-teal-100">
                         <div className="flex justify-between w-full items-center p-2 pl-2 border-transparent">
                             <div className="w-6 flex flex-col items-center">
-                                <div className="flex  relative w-10 h-10 bg-orange-500 justify-center items-center ml-5 m-1 mr-2 w-4 h-4 mt-1 rounded-full ">
+                                <div className="flex relative w-10 h-10 bg-orange-500 justify-center items-center ml-5 m-1 mr-2 w-4 h-4 mt-1 rounded-full ">
                                     <img className="rounded-full h-10 w-10 " alt="image user" src={user.picture}/> 
                                 </div>
                             </div>
@@ -50,15 +50,19 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            {posts && posts.map((post)=>{
-                console.log(post)
-                return(
-                    <CardPost key={post._id} image={testImg} post={post}/>
+                <div className="xs:m-0 sm:m-0 md:m-10 lg:m-36">
+                {posts && posts.map((post)=>{
+                        console.log(post)
+                        return(
+                            <CardPost key={post._id} image={testImg} post={post}/>
 
-                )
+                        )
 
-            })}
+                    })}
                
+
+                </div>
+                   
             </SideBar>  
             <Modal
              showModal={showModal}

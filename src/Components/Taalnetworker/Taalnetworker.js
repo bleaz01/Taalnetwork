@@ -27,7 +27,7 @@ const Taalnetworker = () => {
                     <p>Taalnetworker</p>
                     <SearchForm dataSearch={data}/>
                 </div>
-                <div className=' flex flex-wrap'>
+                <div className='flex justify-center flex-wrap'>
                     {
                         data && data.map(user =>{
                             return(

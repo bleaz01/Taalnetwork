@@ -4,15 +4,20 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
 import { UserContext } from '../../lib/context';
 import { uploadPicture } from '../../lib/redux/actions/user';
+import CardPost from '../Home/CardPost';
 import { isEmpty } from '../utils/function';
 
 
 const Profil = () => {
     const location = useLocation()
     const {user} = useContext(UserContext)
+    const [moreDetails, setmoreDetails] = useState(false);
+    const [tagUser, setTagUser] = useState();
+    const [allPostUser, setAllPostUser] = useState();
     const url = location.pathname.split('/')[2]
     const [profilUser, setProfilUser] = useState("")
     
+   
    const followers = ()=>{
 
         axios.patch(`${process.env.REACT_APP_API_URL}api/user/follow/`,{
@@ -23,11 +28,20 @@ const Profil = () => {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}api/user/${url}`).then((res)=>{
             setProfilUser(res.data)
-            console.log(res)
+            setTagUser(res.data?.tag)
+
         })
     }, [url])
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_URL}api/post/${url}`).then((res)=>{
+            setAllPostUser(res.data)
+        })
+    }, [moreDetails])
     
     console.log(profilUser,'userProfil')
+    console.log(allPostUser,'userPost')
+
     return (
         <div>
         <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"/>
@@ -74,7 +88,7 @@ const Profil = () => {
                             <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{profilUser.followers ? profilUser.followers.length : 0}</span><span class="text-sm text-blueGray-400">Follower</span>
                         </div>
                         <div onClick={() => console.log("modal level")} class="cursor-pointer lg:mr-4 p-3 text-center">
-                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">B1</span><span class="text-sm text-blueGray-400">Level</span>
+                            <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{profilUser?.rank}</span><span class="text-sm text-blueGray-400">Level</span>
                         </div>
                     </div>
                     </div>
@@ -84,33 +98,62 @@ const Profil = () => {
                     {profilUser.pseudo}
                     </h3>
                         <span>Pour quoi je suis ici...</span>
-                        <div  class="mb-2 text-blueGray-600 mt-10">
-                            <i class="fas fa-pencil mr-2 text-lg text-blueGray-400"></i>motify
-                        </div>
                         <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
                             {profilUser.bio} 
                         </p>
-
-                    {/* <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                    <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                    Los Angeles, California
-                    </div>
-                    <div class="mb-2 text-blueGray-600 mt-10">
-                    <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>Solution Manager - Creative Tim Officer
-                    </div>
-                    <div class="mb-2 text-blueGray-600">
-                    <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>University of Computer Science
-                    </div> */}
+                        <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+                            Centre d'interét
+                        </p>
+                        <div className="flex flex-row justify-center">
+                        {tagUser &&
+                            tagUser.map((item) => {
+                                return (
+                                    <div className="flex justify-between m-1 mr-2 w-24 bg-baseColor text-whiteColor rounded-xl p-2 font-bold text-sm">
+                                        <p className="text-center">{item}</p>
+                                        
+                                    </div>
+                                );
+                            })}
+                        </div>
                 </div>
                 <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
-                    <div class="flex flex-wrap justify-center">
-                    <div class="w-full lg:w-9/12 px-4">
-                        <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
-                        {/* {profilUser.bio} koiiulklk */}
-                        </p>
-                        <a href="#pablo" class="font-normal text-baseColor">Show more</a>
+                    <div className="flex flex-wrap justify-center">
+                        <div className="w-full lg:w-9/12 px-4">
+                            <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
+                            {/* {profilUser.bio} koiiulklk */}
+                            </p>
+                            <div onClick={()=> setmoreDetails(!moreDetails)} className="cursor-pointer font-normal text-baseColor">Show more</div>
+                        </div>
                     </div>
-                    </div>
+                   {
+                       moreDetails ?
+                       (
+                       <div className="flex w-full justify-between">
+                            <div className="w-1/2">
+                                  Mes exercice
+                            </div>
+                            <div className="w-1/2">
+                            {allPostUser.length > 0 
+                            ?
+                            allPostUser.map((post)=>{
+                                    console.log(post)
+                                    return(
+                                        <CardPost key={post._id}  post={post}/>
+
+                                    )
+
+                            })
+                            :
+                            <p>No post</p>
+                        }
+                            </div>
+
+                        </div>)
+                        :(
+                            null
+                        )
+
+                   } 
                 </div>
                 </div>
             </div>

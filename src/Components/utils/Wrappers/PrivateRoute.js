@@ -12,6 +12,10 @@ const PrivateRoute =  ({ children, ...rest }) => {
       console.log('il y a un user ')
 
     }
+    if(!cookietoken){
+      console.log('personne ')
+
+    }
   
     return (
       <Route

@@ -83,7 +83,7 @@ const Routes = () => {
                 <Register/>
                 {/* <UpdateRegister/> */}
            </Route>
-           <Route path='/profil/:id'>
+           <Route path='/p/:id'>
                 <Profil/>
             </Route>
            <Route path="/vocabulary">
