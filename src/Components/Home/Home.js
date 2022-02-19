@@ -14,8 +14,9 @@ const Home = () => {
     // const [reload, setReload] = useState(true)
     const [showModal, setShowModal] = useState(false);
     const posts = useSelector((state) => state.post);
+    const user = useSelector((state) => state.user);
 
-    const {user} = useContext(UserContext)
+    // const {user} = useContext(UserContext)
     const dispatch = useDispatch()
     console.log(posts,'post')
     useEffect(() => {

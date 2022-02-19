@@ -11,13 +11,13 @@ import { UserContext } from '../lib/context';
 
 
 const Navbar = () => {
-    const {user} = useContext(UserContext)
+    const {user,logout} = useContext(UserContext)
 
     const dispatch = useDispatch()
     const [curentUser, setcurentUser] = useState()
     const pathname = window.location.pathname
 
-    const logout = async () => {
+    const logoutUser = async () => {
 
         const removeCookie = (key)=>{
             if(window !== "undefined"){
@@ -28,7 +28,10 @@ const Navbar = () => {
             method:'post',
             url:`${process.env.REACT_APP_API_URL}api/user/logout`,
             withCredentials:true
-          }).then((res)=> removeCookie('jwt'))
+          }).then((res)=>
+            removeCookie('jwt'),
+            logout()
+           )
           .catch((err)=>{
                 console.log(err)
           })
@@ -102,7 +105,7 @@ const Navbar = () => {
                         <img src={user.picture} alt="img profil" className="rounded-full h-8 w-8 mr-2" />
                         {/* <span> {user.pseudo}</span> */}
                     </a>
-                    <div className="flex align-middle" onClick={logout} >
+                    <div className="flex align-middle" onClick={logoutUser} >
                         <FontAwesomeIcon classeName="text-baseColor " icon={faSignOutAlt} size="2x"/>
 
                     </div>

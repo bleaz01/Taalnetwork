@@ -10,11 +10,15 @@ const {user,cookietoken } = useContext(UserContext)
 if(user){
     console.log('il y pa user')
   }  
+
+  if(cookietoken){
+    console.log('cooooooookiiiii')
+  }  
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        user && cookietoken ? (
+        cookietoken && user ? (
           <Redirect
             to={{
               pathname: "/home",

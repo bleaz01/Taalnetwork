@@ -4,24 +4,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { CurrentUSerContext } from "../../Routes/AppContext";
 import { UserContext } from '../../../lib/context';
 
+
 const PrivateRoute =  ({ children, ...rest }) => {
 
-  const{ cookietoken } = useContext(UserContext)
+  // const user = useSelector(state => state.user)
+  const{user,cookietoken } = useContext(UserContext)
 
     if(cookietoken){
-      console.log('il y a un user ')
+      console.log(user,"my")
 
     }
-    if(!cookietoken){
-      console.log('personne ')
-
-    }
+    // if(user){
+    //   console.log(user,"=>>>>>>>>>>>>>>>>")
+    // }else{
+    //   console.log("nooooooooooooon")
+    // }
+    console.log(user,'jjjjj')
   
     return (
       <Route
         {...rest}
         render={({ location }) =>
-        cookietoken ? (
+         user ? (
             children
           ) : (
             <Redirect
