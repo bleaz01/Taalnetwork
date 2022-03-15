@@ -17,15 +17,21 @@ export const getUser =(uId)=>{
     }
 }
 
-export const uploadPicture = (file,id)=>{
+export const uploadPicture = (fd,id)=>{
     return(dispach) =>{
-        axios.post(`${process.env.REACT_APP_API_URL}api/user/upload`,
-            {
-                userId:id,
-                file:file,
-
-            }
-          ).then((res)=>{
+           
+        axios.post(`${process.env.REACT_APP_API_URL}api/image/change-profilepic`,fd
+        //{
+			// onUploadProgress: (progressEvent) => {
+			//   setProgress((progressEvent.loaded / progressEvent.total) * 100);
+			//   console.log(
+			// 	'upload progress: ',
+			// 	Math.round((progressEvent.loaded / progressEvent.total) * 100)
+			//   );
+			// }
+		//}
+        )
+        .then((res)=>{
               return axios
               .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
               .then((res)=>{

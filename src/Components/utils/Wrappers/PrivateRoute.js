@@ -10,22 +10,22 @@ const PrivateRoute =  ({ children, ...rest }) => {
   // const user = useSelector(state => state.user)
   const{user,cookietoken } = useContext(UserContext)
 
-    if(cookietoken){
-      console.log(user,"my")
+    // if(cookietoken){
+    //   console.log(user,"my")
 
-    }
+    // }
     // if(user){
     //   console.log(user,"=>>>>>>>>>>>>>>>>")
     // }else{
     //   console.log("nooooooooooooon")
     // }
-    console.log(user,'jjjjj')
+    // console.log(user,'jjjjj')
   
     return (
       <Route
         {...rest}
         render={({ location }) =>
-         user ? (
+         true ? (
             children
           ) : (
             <Redirect

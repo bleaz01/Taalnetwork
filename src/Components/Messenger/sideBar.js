@@ -18,10 +18,8 @@ const SideBar = (listRooms) => {
 		// axios.get(`${process.env.REACT_APP_API_URL}user`)
 		.then((res)=>{
 		setData(res.data)
-		console.log(res)
 		})
 	}, [])
-	console.log(data,'klkl')
 
 	return (
 		<div className="bg-secondeColor flex flex-row w-96 flex-shrink-0 bg-gray-100 p-4">

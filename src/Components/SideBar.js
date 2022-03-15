@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import {useHistory, useLocation, }from 'react-router-dom'
 import { UserContext } from '../lib/context'
+import{ HighlightOff,  }from '@material-ui/icons'
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 
 const SideBar = (props) => {
 
@@ -8,7 +10,6 @@ const SideBar = (props) => {
     const history = useHistory()
     const location = useLocation()
 
-    console.log(user, "user sidebar")
     return (
                 <div className="flex flex-no-wrap h-screen">
                     {/* Sidebar starts */}
@@ -17,13 +18,7 @@ const SideBar = (props) => {
                             <ul className="mt-12">
                                 <li className="flex w-full justify-between text-baseTextColor hover:text-gray-500 cursor-pointer items-center mb-6">
                                     <div className="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" />
-                                            <rect x={4} y={4} width={6} height={6} rx={1} />
-                                            <rect x={14} y={4} width={6} height={6} rx={1} />
-                                            <rect x={4} y={14} width={6} height={6} rx={1} />
-                                            <rect x={14} y={14} width={6} height={6} rx={1} />
-                                        </svg>
+                                        <ArticleOutlinedIcon/>
                                         <span  onClick={() => history.push('/myexercise')} className="text-sm ml-2">
                                             Mes exercices 
                                         </span>
@@ -108,7 +103,7 @@ const SideBar = (props) => {
                     </div>
                    
                     {/* Sidebar ends */}
-                    <div className="h-auto mx-2 py-2 h-64 w-10/12 px-6">
+                    <div className="h-auto mx-2 py-2 w-10/12 px-6">
                         <div className="overflow-y-auto w-full h-full">{
                             props.children
                         }</div>

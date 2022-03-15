@@ -42,7 +42,7 @@ const Conjugation = () => {
                         <h3 className="flex justify-center py-3">
                             Le verbe
                         </h3>
-                        <div class="grid lg:grid-rows-2 grid-rows-3 grid-flow-col gap-4 py-10">
+                        {/* <div class="grid lg:grid-rows-2 grid-rows-3 grid-flow-col gap-4 py-10">
                             {
                                 itemVerb && Object.values(itemVerb[0]).map((item) =>{
                                     console.log(item,'vr')
@@ -54,7 +54,7 @@ const Conjugation = () => {
                             }
                             
                                 
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>

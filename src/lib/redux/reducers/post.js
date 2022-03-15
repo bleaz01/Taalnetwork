@@ -10,7 +10,6 @@ const initialState=[]
 const user = (state = initialState, {type, payload})=>{
     switch(type){
         case GET_POSTS: 
-            console.log(payload)
             return state.post = payload
         case LIKE_POST:
             return state.map((post)=>{

@@ -8,6 +8,7 @@ import { faBars, faCoffee, faSignOutAlt} from '@fortawesome/free-solid-svg-icons
 import axios from 'axios';
 import cookies from 'js-cookie';
 import { UserContext } from '../lib/context';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 
 
 const Navbar = () => {
@@ -38,7 +39,6 @@ const Navbar = () => {
         window.location = '/'
           
     }
-    console.log(user, "user")
     return (
         <nav className="bg-white shadow-lg">
             <div className="mx-2 lg:px-6 flex justify-between w-full pl-0">
@@ -102,12 +102,11 @@ const Navbar = () => {
                 </div> 
                 <div className="hidden lg:flex  my-auto justify-end">
                     <a href="/account" className="flex justify-end ">
-                        <img src={user.picture} alt="img profil" className="rounded-full h-8 w-8 mr-2" />
+                        <img src={`${process.env.REACT_APP_API_URL}api/image/${user.picture}`} alt="img profil" className="rounded-full h-8 w-8 mr-2" />
                         {/* <span> {user.pseudo}</span> */}
                     </a>
                     <div className="flex align-middle" onClick={logoutUser} >
-                        <FontAwesomeIcon classeName="text-baseColor " icon={faSignOutAlt} size="2x"/>
-
+                        <MeetingRoomIcon fontSize={"large"} style={{color:"#4337C9"}}/>
                     </div>
                 </div>
                 <div className="lg:hidden flex my-auto mr-8">

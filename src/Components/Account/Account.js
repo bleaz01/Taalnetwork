@@ -42,7 +42,7 @@ const Account = () => {
                         <div className="sm:mt-10 w-full h-full lg:order-2 flex justify-center">
                             <div className="relative flex flex-row justify-center">
                                 <div className="lg:w-48 lg:h-48 sm:w-36 sm:h-36">
-                                {upload ? <UploadeImgAcount user={user._id}/> : <img alt="profil-picture" src={user.picture} className="rounded-full w-full h-full  border-none"/>   }     
+                                {upload ? <UploadeImgAcount user={user._id}/> : <img alt="profil-picture" src={`${process.env.REACT_APP_API_URL}api/image/${user?.picture}`} className="rounded-full w-full h-full  border-none"/>   }     
 
                                     </div>
                                 <div>

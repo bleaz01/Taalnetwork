@@ -1,4 +1,3 @@
-import {app} from '../../firebase'
 import moment from 'moment';
 
 export const formatDate = (timestamp) => {
@@ -27,11 +26,6 @@ export const isEmpty = (value, userId)=>{
 
 export const handleUploade = (file)=>{
 
-    const storageRef = app.storage().ref()
-    const fileRef = storageRef.child(file.name)
-    fileRef.put(file).then(()=>{
-        console.log(file)
-    })
     
     // const uploadTask = storage.ref(`images/${file.name}`).put(file);
     // console.log(file, userId)

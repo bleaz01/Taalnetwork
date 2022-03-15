@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux'
 import { correctionPost, likePost, unlikePost } from '../../lib/redux/actions/post'
 import { formatDate } from '../utils/function'
 import { useHistory } from 'react-router'
+import SentimentSatisfiedIcon  from '@material-ui/icons/SentimentSatisfied'
+import MoodIcon from '@material-ui/icons/Mood'
 // import { fas } from 'fontawesome.macro'
 const CardPost = ({image, post}) => {
     const [openFeed, setopenFeed] = useState(false)
@@ -20,7 +22,6 @@ const CardPost = ({image, post}) => {
     const history = useHistory()
    
 
-  console.log(user,'kkk')
     const onSubmit = (data)=>{
       console.log(data)
 
@@ -55,8 +56,6 @@ const CardPost = ({image, post}) => {
     //   }
    
     // }, [user._id, liked, post?.likers])
-    console.log(post?.author._id,"kkkk")
-
     return (
           <div className="grid grid-cols-1 gap-6 my-6 px-4 md:px-6 lg:px-8">
             <div className={
@@ -66,7 +65,7 @@ const CardPost = ({image, post}) => {
               <div className="py-2 flex flex-row items-center justify-between">
                 <div className="flex flex-row items-center">
                   <div onClick={() => history.push(`/profil/${post?.author._id}`)} className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
-                    <img className="rounded-full h-8 w-8 object-cover" src={post?.author.picture} alt=""/>
+                    <img className="rounded-full h-8 w-8 object-cover" src={`${process.env.REACT_APP_API_URL}api/image/${post?.author.picture}`} alt=""/>
                     <p className="font-regular ml-2 text-base font-medium">{post?.author.pseudo}</p>
                   </div>
                 </div>
@@ -76,15 +75,27 @@ const CardPost = ({image, post}) => {
               </div>
               <div className="mt-2">
               <div className="py-2">
-                {modify === false  && <p className=" font-regular leading-snug">{post?.message}</p> }
+                {modify === false  && 
+                <div className="flex justify-between">
+                  <p className=" font-regular leading-snug">{post?.message}</p>
+                  <button onClick={()=> like()} className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
+                    {liked ? <MoodIcon/> : <SentimentSatisfiedIcon style={{cursor:"pointer"}}/>}
+                  </button>
+
+                 </div>
+                }
                 {
                   modify
                   &&
                   <div>
-                   <textarea className='w-full bg-baseColor text-whiteColor rounded-lg pl-3 pt-2'
+                    <div>
+                    <textarea className='w-full bg-baseColor text-whiteColor rounded-lg pl-3 pt-2'
                       defaultValue={post?.message}
                       onChange={(e) => setTextUpdate(e.target.value)}
                   ></textarea> 
+                  
+                    </div>
+                  
                   <button onClick={()=> sendCorrectiont()}>
                         send Correctiont
                   </button>
@@ -96,7 +107,7 @@ const CardPost = ({image, post}) => {
               { post?.file !== undefined
                 ? (
                 <div class="flex-shrink-0 mr-3">
-                    <img className="object-cover w-full rounded-lg" src={post?.file} alt={"file post"}/>
+                    <img className="object-cover w-full rounded-lg" src={`${process.env.REACT_APP_API_URL}api/image/${post?.file}`} alt={"file post"}/>
 
                   </div>)
                   :null
@@ -115,10 +126,8 @@ const CardPost = ({image, post}) => {
                     )}
                 <div className="py-2 flex flex-row items-center justify-between">
                   <div className="flex flex-row">
-                  <button onClick={()=> like()} className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-5 h-5"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    <MoodIcon/>
                     <span  className="ml-1">{post?.likers.length === 0 ? 0 :post?.likers.length}</span>
-                  </button>
                   <button className="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg ml-3" onClick={() => setopenFeed(! openFeed)}>
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-5 h-5"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     <span className="ml-1">{post?.comments.length === 0 ? 0 :post?.comments.length}</span>

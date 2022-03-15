@@ -7,13 +7,13 @@ import UserContextProvider, { UserContext } from "../../../lib/context";
 const NoAuthRoute = ({ children, ...rest }) => {
   
 const {user,cookietoken } = useContext(UserContext)
-if(user){
-    console.log('il y pa user')
-  }  
+// if(user){
+//     console.log('il y pa user')
+//   }  
 
-  if(cookietoken){
-    console.log('cooooooookiiiii')
-  }  
+//   if(cookietoken){
+//     console.log('cooooooookiiiii')
+//   }  
   return (
     <Route
       {...rest}

@@ -14,7 +14,7 @@ import shortid from "shortid";
 import { useHistory } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux';
 import { ShowOverlay } from '../../lib/redux/actions/meet';
-
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 
 
@@ -50,9 +50,15 @@ const Live = () => {
       <div className="container">
       
       <div className="flex flex-col bg-secondeColor   h-screen w-screen">
-         <div className=" flex items-center pl-5 pt-5">
-            <img className="w-20 rounded-full"src={Logo}/>
+         <div className=" flex items-center justify-between pl-5 pt-5">
+           <div>
+           <img className="w-20 rounded-full"src={Logo}/>
             <span className="text-baseTextColor pl-2">Taalnetwork</span>
+           </div>
+           <div onClick={()=> history.goBack()} className="pr-5 cursor-pointer">
+              <KeyboardBackspaceIcon className="" fontSize={'large'} style={ {color:'white'}}/>
+              <p className="text-whiteColor">Back</p>
+           </div>
          </div>
          <h2 className="text-center text-3xl pt-5 text-baseTextColor">Video meetings</h2>
 

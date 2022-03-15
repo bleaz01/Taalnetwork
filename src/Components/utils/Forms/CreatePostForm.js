@@ -6,8 +6,12 @@ import base64 from 'base-64';
 import axios from 'axios';
 import { uploadPicture } from '../../../lib/redux/actions/user';
 
+import { v4 as uuidv4 } from 'uuid';
+
+
 const CreatePostForm = () => {
 	const [ file, setFile ] = useState(null);
+	const [idImage, setidImage] = useState()
 	const { register, handleSubmit } = useForm();
 	const { user } = useContext(UserContext);
 
@@ -18,11 +22,30 @@ const CreatePostForm = () => {
 	const [ selectedFile, setSelectedFile ] = useState();
 	const [ successMsg, setSuccessMsg ] = useState('');
 	const [ errMsg, setErrMsg ] = useState('');
+	const [progress, setProgress] = useState(null);
+
 	const [ video, setVideo ] = useState('');
 
+
+	
 	const handleChange = (e) => {
 		setPreviewSource(URL.createObjectURL(e.target.files[0]));
+		setFile(e.target.files[0])
 	};
+
+	const SendPost = async (post)=>{
+		axios
+			.post(`${process.env.REACT_APP_API_URL}api/post`, {
+				post
+			})
+			.then((res) => {
+				setSuccessMsg('Image uploaded successfully');
+				window.location.reload();
+			})
+			.catch((err) => {
+				setErrMsg('Something went wrong!');
+			});
+	}
 
 	const handleVideo = async (link, msg) => {
 		let findLink = link.split(' ');
@@ -54,26 +77,35 @@ const CreatePostForm = () => {
 			}
 		}
 	};
-	const uploadImage = (base64EncodedImage, msg) => {
-		const post = {
-			message: msg,
-			file: base64EncodedImage,
-			author: user._id,
-			posterImg: user.picture,
-			tag: focusTags
-		};
-		console.log(post, 'post');
-		axios
-			.post(`${process.env.REACT_APP_API_URL}api/post`, {
-				post
-			})
-			.then((res) => {
-				setSuccessMsg('Image uploaded successfully');
-				window.location.reload();
-			})
-			.catch((err) => {
-				setErrMsg('Something went wrong!');
-			});
+	const uploadImage = (msg) => {
+
+		const fd = new FormData();
+		fd.append('file', file, file.name);
+		axios.post(`${process.env.REACT_APP_API_URL}api/image/upload`,fd, {
+			onUploadProgress: (progressEvent) => {
+			  setProgress((progressEvent.loaded / progressEvent.total) * 100);
+			  console.log(
+				'upload progress: ',
+				Math.round((progressEvent.loaded / progressEvent.total) * 100)
+			  );
+			}
+		}).then((res)=>{
+			console.log(res.data,'date')
+			const post = {
+				message: msg,
+				file: res.data,
+				author: user._id,
+				posterImg: user.picture,
+				tag: focusTags
+			};
+			SendPost(post)
+
+		})
+		
+
+
+		// console.log(post, 'post');
+		
 	};
 
 	const handleFocusTags = (item) => {
@@ -97,8 +129,8 @@ const CreatePostForm = () => {
 		};
 		console.log(data, 'yoo');
 
-		if (previewSource[0]) {
-			uploadImage(previewSource, data.message);
+		if (file) {
+			uploadImage(data.message);
 		} else {
 			try {
 				axios.post(`${process.env.REACT_APP_API_URL}api/post`, {
@@ -111,27 +143,29 @@ const CreatePostForm = () => {
 				setErrMsg('Something went wrong!');
 			}
 		}
-		window.location.reload();
+		// window.location.reload();
 	};
 	return (
-		<div className="flex justify-center">
-			<section class="w-full m-10 h-1/2 p-6 bg-baseColor rounded-md shadow-md dark:bg-gray-800 mt-10">
+		<div className="flex justify-center ">
+			<section class="w-full m-5 h-80 overflow-y-scroll p-6 bg-baseColor rounded-md shadow-md dark:bg-gray-800">
 				<h1 class="text-xl font-bold text-white capitalize dark:text-white">Account settings</h1>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1">
+						
 						<div>
 							<textarea
 								{...register('message')}
 								id="textarea"
 								type="textarea"
 								class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-								placeholder="Qu'elle est ton poin vue"
+								placeholder="what's on your mind"
 							/>
-							<input
+						
+							{/* <input
 								{...register('video')}
 								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
 								placeholder="Lien vidéo"
-							/>
+							/> */}
 						</div>
 
 						<div className="px-5 py-3">
@@ -273,7 +307,7 @@ const CreatePostForm = () => {
 							<label class="block text-sm font-medium text-whiteColor" />
 							<div class="space-y-1 text-center">
 								<div class="flex items-center justify-center w-full">
-									<label class="flex flex-col rounded-lg w-full h-full p-10 group text-center">
+									<label class="flex flex-col rounded-lg w-full h-full px-10 group text-center">
 										<div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
 											<img
 												class="has-mask h-full w-full object-center"
@@ -309,3 +343,12 @@ const CreatePostForm = () => {
 };
 
 export default CreatePostForm;
+
+
+
+// {
+// 	headers:{
+// 		'accept':'application/json',
+// 		'Accept_Language':'en-US,en=;q=0,.8',
+// 		'Content-Type':`multipart/form-data;boundary${fd._boundary}`,
+// 	}

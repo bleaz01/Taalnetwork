@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 
 const CardComment = ({comment}) => {
     const [openComment, setopenComment] = useState(false)
-  console.log(comment.author,"comment");
     return (
         <div>
                    

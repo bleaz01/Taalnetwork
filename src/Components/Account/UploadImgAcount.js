@@ -33,12 +33,27 @@ const [picture, setPicture] = useState("")
             };
         }
     }
-    const uploadImage = async (base64EncodedImage) => {
-        console.log("salut je t'envoi ")
-        console.log(user,'envoi')
-        dispatch(uploadPicture(base64EncodedImage,user.user))
+    const uploadImage = async () => {
+        const fd = new FormData();
+		fd.append('file', picture, picture.name);
+        fd.append('userId', user.user)
+        dispatch(uploadPicture(fd, user.user))
         window.location.reload()
      };
+
+   
+
+	
+		// axios.post(`${process.env.REACT_APP_API_URL}api/image/upload`,fd, {
+		// 	onUploadProgress: (progressEvent) => {
+		// 	  setProgress((progressEvent.loaded / progressEvent.total) * 100);
+		// 	  console.log(
+		// 		'upload progress: ',
+		// 		Math.round((progressEvent.loaded / progressEvent.total) * 100)
+		// 	  );
+		// 	}
+		// })
+		
  
  
         
