@@ -71,7 +71,12 @@ const Home = () => {
                         <div className="flex flex-col justify-between w-full items-center p-2 pl-2 border-transparent">
                             <div className="flex items-center w-full ">
                                 <div className="flex relative w-12 h-12 bg-orange-500 justify-center items-center w-4 h-4 mt-1 rounded-full ">
-                                    <img className="rounded-full h-10 w-10 " alt="image user" src={`${process.env.REACT_APP_API_URL}api/image/${user.picture}`}/> 
+                                    {
+                                        user.picture
+                                        ?  <img className="rounded-full h-10 w-10 " alt="image user" src={`${process.env.REACT_APP_API_URL}api/image/${user.picture}`}/> 
+                                        : <small>no picture</small>
+ 
+                                    }
                                 </div>
                                 <form onSubmit={handleSubmit(onSubmit)} className="w-full px-4 py-1">
                                     <input {...register('text')} className="border-2 border rounded-2xl w-full px-4 py-1"placeholder="wat you thinds" type="text"/>
