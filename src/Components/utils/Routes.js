@@ -41,7 +41,8 @@ const Routes = () => {
 
     return (
         
-       <Router basename="https://bleaz01.github.io/Taalnetwork">
+    //    <Router basename="https://bleaz01.github.io/Taalnetwork">
+    <Router>
            <NoAuthRoute  exact path="/">
                 LandingPage   
            </NoAuthRoute>
