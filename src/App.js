@@ -14,7 +14,7 @@ const App =()=> {
       <CookiesProvider>
         <UserContextProvider>
       
-          <Routes basename="/"></Routes>
+          <Routes></Routes>
 
          
         </UserContextProvider>
