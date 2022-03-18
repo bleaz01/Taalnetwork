@@ -85,7 +85,6 @@
     ]
   },
   "devDependencies": {
-    "@graphql-codegen/typescript-react-apollo": "^3.2.1",
-    "gh-pages": "^3.2.3"
+    "@graphql-codegen/typescript-react-apollo": "^3.2.1"
   }
 }
