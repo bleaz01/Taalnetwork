@@ -44,7 +44,7 @@ const Routes = () => {
        <Router>
     {/* // <Router> */}
            <NoAuthRoute  exact path="/Taalnetwork/">
-                LandingPage   
+           <Home/>
            </NoAuthRoute>
            <PrivateRoute exact path="/Taalnetwork/#/home">
                 <Home/>
