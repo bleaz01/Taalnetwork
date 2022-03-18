@@ -46,9 +46,9 @@ const Routes = () => {
            <NoAuthRoute  exact path="/">
                 LandingPage   
            </NoAuthRoute>
-           <PrivateRoute exact path="/home">
+           <NoAuthRoute exact path="/home">
                 <Home/>
-           </PrivateRoute>
+           </NoAuthRoute>
           
             <NoAuthRoute path="/login">
                 <Login/>
@@ -60,50 +60,50 @@ const Routes = () => {
            <Route exact path="/myexercise">
                <MyExercise/>
            </Route>
-           <PrivateRoute exact path='/account'>
+           <NoAuthRoute exact path='/account'>
                <Account/>    
-           </PrivateRoute>
-           <PrivateRoute path='/conjugation'>
+           </NoAuthRoute>
+           <NoAuthRoute path='/conjugation'>
                <Conjugation/>
-           </PrivateRoute>
-           <PrivateRoute exact path='/live'>
+           </NoAuthRoute>
+           <NoAuthRoute exact path='/live'>
                <Live/>
-           </PrivateRoute>
-           <PrivateRoute exact path='/live/joint-room'>
+           </NoAuthRoute>
+           <NoAuthRoute exact path='/live/joint-room'>
                <LivePage/>
-           </PrivateRoute>
-           <PrivateRoute exact path='/room'>
+           </NoAuthRoute>
+           <NoAuthRoute exact path='/room'>
                <LiveRoom/>
-           </PrivateRoute>
-           <PrivateRoute exact path='/exercices&test'>
+           </NoAuthRoute>
+           <NoAuthRoute exact path='/exercices&test'>
                <Exercices/>
-           </PrivateRoute>
-           <PrivateRoute path='/messenger'>
+           </NoAuthRoute>
+           <NoAuthRoute path='/messenger'>
                <Messenger/>
-           </PrivateRoute>
+           </NoAuthRoute>
            <NoAuthRoute path="/register">
                 <Register/>
                 {/* <UpdateRegister/> */}
            </NoAuthRoute>
-           <PrivateRoute path='/p/:id'>
+           <NoAuthRoute path='/p/:id'>
                 <Profil/>
-            </PrivateRoute>
-           <PrivateRoute path="/vocabulary">
+            </NoAuthRoute>
+           <NoAuthRoute path="/vocabulary">
                 <Vocabulary/>
-           </PrivateRoute>
-           <PrivateRoute exact path="/pratis">
+           </NoAuthRoute>
+           <NoAuthRoute exact path="/pratis">
                 <FormExercise/>
-           </PrivateRoute>
-           <PrivateRoute path='/users'>
+           </NoAuthRoute>
+           <NoAuthRoute path='/users'>
                <Taalnetworker/>
-           </PrivateRoute>
+           </NoAuthRoute>
            <VipRoute path='/dashboard'>
                 <Index/>
            </VipRoute>
-           <PrivateRoute path='/payement'>
+           <NoAuthRoute path='/payement'>
                 <IndexPayement/>
                 {/* <CardPricing/> */}
-           </PrivateRoute>
+           </NoAuthRoute>
        </Router>
     )
 }
