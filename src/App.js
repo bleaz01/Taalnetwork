@@ -13,12 +13,10 @@ const App =()=> {
     <LocaleContextProvider>
       <CookiesProvider>
         <UserContextProvider>
-          <BrowserRouter>
-          <HashRouter>
-          <Routes></Routes>
+      
+          <Routes basename="/"></Routes>
 
-            </HashRouter>
-          </BrowserRouter>
+         
         </UserContextProvider>
       </CookiesProvider>
     </LocaleContextProvider>
