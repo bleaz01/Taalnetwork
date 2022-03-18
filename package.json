@@ -1,8 +1,8 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "http://bleaz01.github.io/Taalnetwork",
-  "private": true,
+  "homepage": "https://bleaz01.github.io/Taalnetwork",
+  "private": false,
   "dependencies": {
     "@apollo/client": "^3.4.17",
     "@craco/craco": "^6.3.0",
