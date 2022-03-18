@@ -102,8 +102,9 @@ const Navbar = () => {
                 </div> 
                 <div className="hidden lg:flex  my-auto justify-end">
                     <a href="/account" className="flex justify-end ">
-                        <img src={`${process.env.REACT_APP_API_URL}api/image/${user.picture}`} alt="img profil" className="rounded-full h-8 w-8 mr-2" />
+                        {/* <img src={`${process.env.REACT_APP_API_URL}api/image/${user.picture}`} alt="img profil" className="rounded-full h-8 w-8 mr-2" /> */}
                         {/* <span> {user.pseudo}</span> */}
+                        image_profile
                     </a>
                     <div className="flex align-middle" onClick={logoutUser} >
                         <MeetingRoomIcon fontSize={"large"} style={{color:"#4337C9"}}/>
