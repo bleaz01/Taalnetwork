@@ -41,7 +41,7 @@ const Routes = () => {
 
     return (
         
-       <Router basename="/Taalnetwork">
+       <Router>
     {/* // <Router> */}
            <NoAuthRoute  exact path="/">
                 LandingPage   

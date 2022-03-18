@@ -13,11 +13,9 @@ const App =()=> {
     <LocaleContextProvider>
       <CookiesProvider>
         <UserContextProvider>
-        <HashRouter>
+        
         <Routes></Routes>
-        </HashRouter>
-     
-
+       
          
         </UserContextProvider>
       </CookiesProvider>
