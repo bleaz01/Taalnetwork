@@ -29,7 +29,6 @@
     "firebase": "^9.5.0",
     "firebase-tools": "^10.2.2",
     "fontawesome.macro": "^1.1.0",
-    "gh-pages": "^3.2.3",
     "graphql": "^16.0.1",
     "heroicons": "^1.0.5",
     "image-file-to-base64-exif": "^1.0.3",
@@ -66,8 +65,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "predeploy": "yarn start",
-    "deploy":"gh-pages -d build"
+    "predeploy": "npm run start",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -88,6 +87,7 @@
     ]
   },
   "devDependencies": {
-    "@graphql-codegen/typescript-react-apollo": "^3.2.1"
+    "@graphql-codegen/typescript-react-apollo": "^3.2.1",
+    "gh-pages": "^3.2.3"
   }
 }
