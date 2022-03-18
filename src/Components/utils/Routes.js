@@ -41,20 +41,20 @@ const Routes = () => {
 
     return (
         
-       <Router>
+       <Router basename="/Taalnetwork">
     {/* // <Router> */}
-           <NoAuthRoute  exact path="/Taalnetwork/">
-           <Home/>
+           <NoAuthRoute  exact path="/">
+                LandingPage   
            </NoAuthRoute>
-           <PrivateRoute exact path="/Taalnetwork/#/home">
+           <PrivateRoute exact path="/home">
                 <Home/>
            </PrivateRoute>
           
-            <NoAuthRoute path="/Taalnetwork/login">
+            <NoAuthRoute path="/login">
                 <Login/>
            </NoAuthRoute>
           
-           <Route exact path='/Taalnetwork/grammar'>
+           <Route exact path='/grammar'>
                <Grammar/>
            </Route>
            <Route exact path="/myexercise">
