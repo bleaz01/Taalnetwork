@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/Taalnetwork/static/css/main.f0d3668b.chunk.css",
+    "main.js": "/Taalnetwork/static/js/main.fd511e24.chunk.js",
+    "main.js.map": "/Taalnetwork/static/js/main.fd511e24.chunk.js.map",
+    "runtime-main.js": "/Taalnetwork/static/js/runtime-main.d4583e42.js",
+    "runtime-main.js.map": "/Taalnetwork/static/js/runtime-main.d4583e42.js.map",
+    "static/js/2.da95fe7d.chunk.js": "/Taalnetwork/static/js/2.da95fe7d.chunk.js",
+    "static/js/2.da95fe7d.chunk.js.map": "/Taalnetwork/static/js/2.da95fe7d.chunk.js.map",
+    "static/js/3.66d4e780.chunk.js": "/Taalnetwork/static/js/3.66d4e780.chunk.js",
+    "static/js/3.66d4e780.chunk.js.map": "/Taalnetwork/static/js/3.66d4e780.chunk.js.map",
+    "index.html": "/Taalnetwork/index.html",
+    "static/css/main.f0d3668b.chunk.css.map": "/Taalnetwork/static/css/main.f0d3668b.chunk.css.map",
+    "static/js/2.da95fe7d.chunk.js.LICENSE.txt": "/Taalnetwork/static/js/2.da95fe7d.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/Taalnetwork/static/media/ComicNeue-Regular.f6e8f457.ttf",
+    "static/media/Dialogue.8b63ba1f.png": "/Taalnetwork/static/media/Dialogue.8b63ba1f.png",
+    "static/media/actu.898a8507.png": "/Taalnetwork/static/media/actu.898a8507.png",
+    "static/media/like.3a3591f2.png": "/Taalnetwork/static/media/like.3a3591f2.png",
+    "static/media/puff.be69e7a9.svg": "/Taalnetwork/static/media/puff.be69e7a9.svg",
+    "static/media/taalTeacher.cdb4956c.png": "/Taalnetwork/static/media/taalTeacher.cdb4956c.png",
+    "static/media/workteam.2b43976e.png": "/Taalnetwork/static/media/workteam.2b43976e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d4583e42.js",
+    "static/js/2.da95fe7d.chunk.js",
+    "static/css/main.f0d3668b.chunk.css",
+    "static/js/main.fd511e24.chunk.js"
+  ]
+}
