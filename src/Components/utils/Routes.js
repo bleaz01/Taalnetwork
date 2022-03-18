@@ -1,5 +1,5 @@
 import React,{useState, useEffect, useContext} from 'react'
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect,} from "react-router-dom";
 import Account from '../Account/Account';
 import Conjugation from '../Conjugation/Conjugation';
 import Grammar from '../Grammar/Grammar';
@@ -41,7 +41,8 @@ const Routes = () => {
 
     return (
         
-       <Router>
+    //    <Router basename="https://bleaz01.github.io/Taalnetwork">
+    <Router>
            <NoAuthRoute  exact path="/">
                 LandingPage   
            </NoAuthRoute>
